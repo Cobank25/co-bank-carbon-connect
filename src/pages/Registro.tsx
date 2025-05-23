@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,6 +13,7 @@ import * as z from "zod";
 import { toast } from "@/components/ui/sonner";
 import { Leaf } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import emailjs from 'emailjs-com';
 
 const formSchema = z.object({
   nome: z.string().min(2, { message: "Nome precisa ter pelo menos 2 caracteres" }),
@@ -30,9 +30,16 @@ const formSchema = z.object({
   })
 });
 
+// IDs e Keys do EmailJS - você precisará criar uma conta gratuita no EmailJS
+// e configurar um template de email com as variáveis correspondentes
+const EMAILJS_SERVICE_ID = "service_cobank"; // Substitua pelo seu ID de serviço
+const EMAILJS_TEMPLATE_ID = "template_cobank"; // Substitua pelo seu ID de template
+const EMAILJS_USER_ID = "user_id"; // Substitua pelo seu User ID
+
 const Registro = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -48,12 +55,48 @@ const Registro = () => {
     },
   });
 
+  const sendEmail = async (values: z.infer<typeof formSchema>) => {
+    setIsSubmitting(true);
+    
+    // Preparar os dados para o template do EmailJS
+    const templateParams = {
+      to_email: "cobank.sa@gmail.com", // Email de destino
+      from_name: values.nome,
+      from_email: values.email,
+      telefone: values.telefone,
+      tipo_gerador: values.tipoGerador === "individual" ? "Pessoa Física" : "Empresa",
+      tipo_propriedade: values.tipoPropriedade,
+      tamanho_area: values.tamanhoArea + " hectares",
+      descricao_projeto: values.descricaoProjeto,
+    };
+    
+    try {
+      // Enviar email usando EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_USER_ID
+      );
+      
+      toast.success("Formulário enviado com sucesso! Você receberá uma confirmação por email.");
+      
+      // Redirecionar após envio bem-sucedido
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 2000);
+      
+    } catch (error) {
+      console.error("Erro ao enviar email:", error);
+      toast.error("Erro ao enviar o formulário. Por favor, tente novamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
-    toast.success("Formulário enviado com sucesso!");
-    setTimeout(() => {
-      navigate("/dashboard");
-    }, 2000);
+    sendEmail(values);
   };
 
   const nextStep = async () => {
@@ -303,7 +346,6 @@ const Registro = () => {
                     </div>
                   </>
                 )}
-
               </form>
             </Form>
           </CardContent>
@@ -322,8 +364,9 @@ const Registro = () => {
               <Button 
                 onClick={form.handleSubmit(onSubmit)} 
                 className="bg-green-600 hover:bg-green-700"
+                disabled={isSubmitting}
               >
-                Enviar formulário
+                {isSubmitting ? "Enviando..." : "Enviar formulário"}
               </Button>
             )}
           </CardFooter>
