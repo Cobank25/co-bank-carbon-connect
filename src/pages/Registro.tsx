@@ -25,9 +25,9 @@ const formSchema = z.object({
   tipoPropriedade: z.string().min(1, { message: "Selecione o tipo de propriedade" }),
   tamanhoArea: z.string().min(1, { message: "Informe o tamanho da área" }),
   descricaoProjeto: z.string().min(10, { message: "Descreva seu projeto em pelo menos 10 caracteres" }),
-  termos: z.literal(true, {
-    errorMap: () => ({ message: "Você precisa aceitar os termos" }),
-  }),
+  termos: z.boolean().refine(val => val === true, {
+    message: "Você precisa aceitar os termos"
+  })
 });
 
 const Registro = () => {
