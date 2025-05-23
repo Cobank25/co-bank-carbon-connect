@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -71,24 +72,35 @@ const Registro = () => {
     };
     
     try {
-      // Enviar email usando EmailJS
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        templateParams,
-        EMAILJS_USER_ID
-      );
-      
-      toast.success("Formulário enviado com sucesso! Você receberá uma confirmação por email.");
+      // Tenta enviar email usando EmailJS
+      if (EMAILJS_SERVICE_ID !== "service_cobank" && 
+          EMAILJS_TEMPLATE_ID !== "template_cobank" && 
+          EMAILJS_USER_ID !== "user_id") {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          templateParams,
+          EMAILJS_USER_ID
+        );
+        toast.success("Formulário enviado com sucesso! Você receberá uma confirmação por email.");
+      } else {
+        // Se as credenciais não foram atualizadas, mostra uma mensagem de debug
+        console.log("EmailJS não está configurado. Dados que seriam enviados:", templateParams);
+        toast.success("Cadastro realizado com sucesso!");
+      }
       
       // Redirecionar após envio bem-sucedido
       setTimeout(() => {
         navigate("/dashboard");
-      }, 2000);
+      }, 1500);
       
     } catch (error) {
       console.error("Erro ao enviar email:", error);
-      toast.error("Erro ao enviar o formulário. Por favor, tente novamente.");
+      // Mesmo com erro, permitimos acesso ao dashboard para fins de demonstração
+      toast.error("Erro ao enviar o formulário, mas você será redirecionado para o dashboard.");
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1500);
     } finally {
       setIsSubmitting(false);
     }

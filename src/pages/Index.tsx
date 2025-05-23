@@ -19,13 +19,14 @@ const Index = () => {
             <Link to="/como-funciona" className="text-green-800 hover:text-green-600">Como Funciona</Link>
             <Link to="/sobre" className="text-green-800 hover:text-green-600">Sobre Nós</Link>
             <Link to="/contato" className="text-green-800 hover:text-green-600">Contato</Link>
+            <Link to="/dashboard" className="text-green-800 hover:text-green-600 font-medium">Dashboard</Link>
           </nav>
           <div className="flex gap-4">
             <Button asChild variant="outline" className="hidden sm:flex">
               <Link to="/registro">Cadastre-se</Link>
             </Button>
             <Button asChild className="bg-green-600 hover:bg-green-700">
-              <Link to="/login">Entrar</Link>
+              <Link to="/dashboard">Acessar Dashboard</Link>
             </Button>
           </div>
         </div>
@@ -44,7 +45,7 @@ const Index = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="bg-green-600 hover:bg-green-700">
-                <Link to="/registro">Comece agora <ArrowRight className="ml-2" /></Link>
+                <Link to="/dashboard">Acessar Dashboard <ArrowRight className="ml-2" /></Link>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <Link to="/como-funciona">Saiba mais</Link>
@@ -115,7 +116,7 @@ const Index = () => {
 
           <div className="mt-12 text-center">
             <Button asChild className="bg-green-600 hover:bg-green-700">
-              <Link to="/registro">Iniciar processo <ChevronRight className="ml-1" /></Link>
+              <Link to="/dashboard">Acessar plataforma <ChevronRight className="ml-1" /></Link>
             </Button>
           </div>
         </div>
@@ -129,9 +130,14 @@ const Index = () => {
             Junte-se à CoBank e faça parte da revolução sustentável. Conectamos pequenos e médios 
             geradores a grandes compradores, simplificando todo o processo.
           </p>
-          <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-800">
-            <Link to="/registro">Cadastre-se agora</Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-800">
+              <Link to="/registro">Cadastre-se agora</Link>
+            </Button>
+            <Button asChild size="lg" className="bg-white text-green-800 hover:bg-gray-100">
+              <Link to="/dashboard">Acessar Dashboard</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -156,6 +162,7 @@ const Index = () => {
                 <li><Link to="/como-funciona" className="text-gray-600 hover:text-green-600">Como Funciona</Link></li>
                 <li><Link to="/sobre" className="text-gray-600 hover:text-green-600">Sobre Nós</Link></li>
                 <li><Link to="/contato" className="text-gray-600 hover:text-green-600">Contato</Link></li>
+                <li><Link to="/dashboard" className="text-gray-600 hover:text-green-600">Dashboard</Link></li>
               </ul>
             </div>
             
