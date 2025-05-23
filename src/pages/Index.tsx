@@ -36,7 +36,7 @@ const Index = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold text-green-900 leading-tight mb-4">
-              Conectando geradores e compradores de créditos de carbono
+              Conectando você ao mercado de créditos de carbono
             </h1>
             <p className="text-lg text-gray-600 mb-8">
               A CoBank simplifica o acesso ao mercado de créditos de carbono para pequenos e médios geradores, 
