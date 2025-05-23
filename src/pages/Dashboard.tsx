@@ -1,10 +1,9 @@
-
 import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { Leaf, CircleDollarSign, BarChart4, LineChart, ArrowUpRight, ArrowDownRight, Settings, Bell, LogOut, Menu, PlusCircle, ArrowRight, User, HelpCircle } from "lucide-react";
+import { CircleDollarSign, BarChart4, LineChart, ArrowUpRight, ArrowDownRight, Settings, Bell, LogOut, Menu, PlusCircle, ArrowRight, User, HelpCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
@@ -25,7 +24,7 @@ const Dashboard = () => {
                 <Menu className="h-5 w-5" />
               </Button>
               <div className="flex items-center gap-2">
-                <Leaf className="h-6 w-6 text-green-600" />
+                <img src="/lovable-uploads/b6213c32-ed1d-45af-94c8-396fc645d88e.png" alt="CoBank Logo" className="h-8 w-8" />
                 <span className="text-xl font-bold text-green-800">CoBank</span>
               </div>
             </div>
@@ -133,6 +132,10 @@ const Dashboard = () => {
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar - desktop */}
         <aside className={`w-64 bg-white border-r border-gray-200 p-4 hidden md:block`}>
+          <div className="flex items-center gap-2 mb-6">
+            <img src="/lovable-uploads/b6213c32-ed1d-45af-94c8-396fc645d88e.png" alt="CoBank Logo" className="h-6 w-6" />
+            <span className="font-bold text-green-800">CoBank</span>
+          </div>
           <nav className="space-y-1">
             <Button variant="ghost" className="w-full justify-start" asChild>
               <Link to="/dashboard">
@@ -172,7 +175,7 @@ const Dashboard = () => {
         >
           <div className="flex justify-between items-center mb-6">
             <div className="flex items-center gap-2">
-              <Leaf className="h-5 w-5 text-green-600" />
+              <img src="/lovable-uploads/b6213c32-ed1d-45af-94c8-396fc645d88e.png" alt="CoBank Logo" className="h-6 w-6" />
               <span className="font-bold text-green-800">CoBank</span>
             </div>
             <Button variant="ghost" size="sm" onClick={toggleSideNav}>

@@ -1,7 +1,6 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChevronRight, Leaf, BarChart4, Users, ArrowRight } from "lucide-react";
+import { ChevronRight, BarChart4, Users, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
@@ -11,7 +10,7 @@ const Index = () => {
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="container mx-auto py-4 px-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <Leaf className="h-6 w-6 text-green-600" />
+            <img src="/lovable-uploads/b6213c32-ed1d-45af-94c8-396fc645d88e.png" alt="CoBank Logo" className="h-10 w-10" />
             <h1 className="text-2xl font-bold text-green-800">CoBank</h1>
           </div>
           <nav className="hidden md:flex items-center gap-6">
@@ -141,7 +140,7 @@ const Index = () => {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <Leaf className="h-5 w-5 text-green-600" />
+                <img src="/lovable-uploads/b6213c32-ed1d-45af-94c8-396fc645d88e.png" alt="CoBank Logo" className="h-8 w-8" />
                 <span className="text-xl font-bold text-green-800">CoBank</span>
               </div>
               <p className="text-gray-600">

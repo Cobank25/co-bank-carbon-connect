@@ -5,15 +5,43 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowLeft, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Vender = () => {
+  const [amount, setAmount] = useState<string>("");
+  const [price, setPrice] = useState<string>("150");
+  const [total, setTotal] = useState<string>("0,00");
+  const [fee, setFee] = useState<string>("0,00");
+
+  useEffect(() => {
+    const calculateValues = () => {
+      const amountValue = parseFloat(amount) || 0;
+      const priceValue = parseFloat(price) || 0;
+      
+      const totalValue = amountValue * priceValue;
+      const feeValue = totalValue * 0.02;
+      
+      setTotal(totalValue.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+      setFee(feeValue.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+    };
+    
+    calculateValues();
+  }, [amount, price]);
+
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="container mx-auto max-w-4xl">
-        <Link to="/dashboard" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-6">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Voltar ao Dashboard
-        </Link>
+        <div className="flex items-center justify-between mb-6">
+          <Link to="/dashboard" className="inline-flex items-center text-gray-600 hover:text-gray-900">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Voltar ao Dashboard
+          </Link>
+          
+          <div className="flex items-center">
+            <img src="/lovable-uploads/b6213c32-ed1d-45af-94c8-396fc645d88e.png" alt="CoBank Logo" className="h-8 w-8 mr-2" />
+            <span className="font-bold text-green-800">CoBank</span>
+          </div>
+        </div>
         
         <h1 className="text-2xl font-bold mb-6">Vender Créditos de Carbono</h1>
         
@@ -32,22 +60,34 @@ const Vender = () => {
                 
                 <div className="space-y-2">
                   <Label htmlFor="amount">Quantidade para vender (tCO₂e)</Label>
-                  <Input id="amount" type="number" placeholder="Ex: 50" />
+                  <Input 
+                    id="amount" 
+                    type="number" 
+                    placeholder="Ex: 50" 
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                  />
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="price">Preço por unidade (R$)</Label>
-                  <Input id="price" type="number" placeholder="Ex: 150" defaultValue="150" />
+                  <Input 
+                    id="price" 
+                    type="number" 
+                    placeholder="Ex: 150" 
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                  />
                 </div>
                 
                 <div className="p-4 bg-gray-50 rounded-md">
                   <div className="flex justify-between mb-2">
                     <span className="text-gray-600">Valor total:</span>
-                    <span className="font-bold">R$ 0,00</span>
+                    <span className="font-bold">R$ {total}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-500">Taxa CoBank (2%):</span>
-                    <span className="text-gray-500">R$ 0,00</span>
+                    <span className="text-gray-500">R$ {fee}</span>
                   </div>
                 </div>
               </CardContent>
@@ -94,7 +134,8 @@ const Vender = () => {
             </Card>
             
             <Card>
-              <CardHeader>
+              <CardHeader className="flex flex-row items-center gap-2">
+                <img src="/lovable-uploads/b6213c32-ed1d-45af-94c8-396fc645d88e.png" alt="CoBank Logo" className="h-6 w-6" />
                 <CardTitle>Dicas para venda</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
