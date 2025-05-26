@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronRight, BarChart4, Users, ArrowRight, Leaf } from "lucide-react";
@@ -16,8 +15,6 @@ const Index = () => {
           </div>
           <nav className="hidden md:flex items-center gap-6">
             <Link to="/" className="text-green-800 hover:text-green-600">Início</Link>
-            <Link to="/como-funciona" className="text-green-800 hover:text-green-600">Como Funciona</Link>
-            <Link to="/sobre" className="text-green-800 hover:text-green-600">Sobre Nós</Link>
             <Link to="/contato" className="text-green-800 hover:text-green-600">Contato</Link>
             <Link to="/dashboard" className="text-green-800 hover:text-green-600 font-medium">Dashboard</Link>
           </nav>
@@ -159,8 +156,6 @@ const Index = () => {
               <h3 className="font-semibold text-gray-800 mb-4">Links Rápidos</h3>
               <ul className="space-y-2">
                 <li><Link to="/" className="text-gray-600 hover:text-green-600">Início</Link></li>
-                <li><Link to="/como-funciona" className="text-gray-600 hover:text-green-600">Como Funciona</Link></li>
-                <li><Link to="/sobre" className="text-gray-600 hover:text-green-600">Sobre Nós</Link></li>
                 <li><Link to="/contato" className="text-gray-600 hover:text-green-600">Contato</Link></li>
                 <li><Link to="/dashboard" className="text-gray-600 hover:text-green-600">Dashboard</Link></li>
               </ul>
