@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Registro from "./pages/Registro";
 import Dashboard from "./pages/Dashboard";
+import MobileDashboard from "./pages/MobileDashboard";
 import Vender from "./pages/Vender";
 import Comprar from "./pages/Comprar";
 import Investir from "./pages/Investir";
@@ -53,6 +54,7 @@ const App = () => {
             <Route path="/" element={<Index />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/mobile-dashboard" element={<MobileDashboard />} />
             <Route path="/vender" element={<Vender />} />
             <Route path="/comprar" element={<Comprar />} />
             <Route path="/investir" element={<Investir />} />
