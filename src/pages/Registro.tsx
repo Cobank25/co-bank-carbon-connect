@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,7 +11,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "@/components/ui/sonner";
-import { Leaf } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import emailjs from 'emailjs-com';
 
@@ -127,7 +125,7 @@ const Registro = () => {
       <div className="container mx-auto max-w-3xl">
         <div className="text-center mb-8">
           <Link to="/" className="flex items-center justify-center gap-2 mb-6">
-            <Leaf className="h-6 w-6 text-green-600" />
+            <img src="/lovable-uploads/b6213c32-ed1d-45af-94c8-396fc645d88e.png" alt="CoBank Logo" className="h-8 w-8" />
             <h1 className="text-2xl font-bold text-green-800">CoBank</h1>
           </Link>
           <h1 className="text-3xl font-bold text-green-900">Cadastro de Gerador de Créditos de Carbono</h1>
