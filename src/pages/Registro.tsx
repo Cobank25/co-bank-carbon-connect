@@ -29,16 +29,17 @@ const formSchema = z.object({
   })
 });
 
-// IDs e Keys do EmailJS - você precisará criar uma conta gratuita no EmailJS
-// e configurar um template de email com as variáveis correspondentes
-const EMAILJS_SERVICE_ID = "service_cobank"; // Substitua pelo seu ID de serviço
-const EMAILJS_TEMPLATE_ID = "template_cobank"; // Substitua pelo seu ID de template
-const EMAILJS_USER_ID = "user_id"; // Substitua pelo seu User ID
+// IDs e Keys do EmailJS
+const EMAILJS_SERVICE_ID = "service_cobank";
+const EMAILJS_TEMPLATE_ID = "template_cobank";
+const EMAILJS_USER_ID = "user_id";
 
 const Registro = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showScore, setShowScore] = useState(false);
+  const [calculatedScore, setCalculatedScore] = useState(0);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -54,12 +55,50 @@ const Registro = () => {
     },
   });
 
+  const calculateScore = (values: z.infer<typeof formSchema>) => {
+    let score = 0;
+    
+    // Pontuação baseada na completude e qualidade das informações
+    
+    // Nome completo (1 ponto)
+    if (values.nome.trim().split(' ').length >= 2) score += 1;
+    
+    // Email válido (1 ponto)
+    if (values.email.includes('@') && values.email.includes('.')) score += 1;
+    
+    // Telefone completo (1 ponto)
+    if (values.telefone.length >= 11) score += 1;
+    
+    // Tipo de propriedade selecionado (1 ponto)
+    if (values.tipoPropriedade) score += 1;
+    
+    // Área informada e realística (2 pontos)
+    const area = parseFloat(values.tamanhoArea);
+    if (area > 0) {
+      score += 1;
+      if (area >= 10) score += 1; // Área maior = maior potencial
+    }
+    
+    // Descrição detalhada do projeto (3 pontos)
+    const descricao = values.descricaoProjeto.trim();
+    if (descricao.length >= 50) score += 1;
+    if (descricao.length >= 100) score += 1;
+    if (descricao.toLowerCase().includes('sustentabilidade') || 
+        descricao.toLowerCase().includes('carbono') || 
+        descricao.toLowerCase().includes('meio ambiente') ||
+        descricao.toLowerCase().includes('reflorestamento') ||
+        descricao.toLowerCase().includes('energia renovável')) {
+      score += 1;
+    }
+    
+    return score;
+  };
+
   const sendEmail = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
     
-    // Preparar os dados para o template do EmailJS
     const templateParams = {
-      to_email: "cobank.sa@gmail.com", // Email de destino
+      to_email: "cobank.sa@gmail.com",
       from_name: values.nome,
       from_email: values.email,
       telefone: values.telefone,
@@ -67,10 +106,10 @@ const Registro = () => {
       tipo_propriedade: values.tipoPropriedade,
       tamanho_area: values.tamanhoArea + " hectares",
       descricao_projeto: values.descricaoProjeto,
+      score: calculatedScore,
     };
     
     try {
-      // Tenta enviar email usando EmailJS
       if (EMAILJS_SERVICE_ID !== "service_cobank" && 
           EMAILJS_TEMPLATE_ID !== "template_cobank" && 
           EMAILJS_USER_ID !== "user_id") {
@@ -80,25 +119,29 @@ const Registro = () => {
           templateParams,
           EMAILJS_USER_ID
         );
-        toast.success("Formulário enviado com sucesso! Você receberá uma confirmação por email.");
       } else {
-        // Se as credenciais não foram atualizadas, mostra uma mensagem de debug
         console.log("EmailJS não está configurado. Dados que seriam enviados:", templateParams);
-        toast.success("Cadastro realizado com sucesso!");
       }
       
-      // Redirecionar após envio bem-sucedido
+      // Salvar dados no localStorage para usar no dashboard
+      localStorage.setItem('userData', JSON.stringify({
+        ...values,
+        score: calculatedScore,
+        registrationDate: new Date().toISOString()
+      }));
+      
+      toast.success("Cadastro realizado com sucesso! Redirecionando para o dashboard...");
+      
       setTimeout(() => {
         navigate("/dashboard");
-      }, 1500);
+      }, 2000);
       
     } catch (error) {
       console.error("Erro ao enviar email:", error);
-      // Mesmo com erro, permitimos acesso ao dashboard para fins de demonstração
       toast.error("Erro ao enviar o formulário, mas você será redirecionado para o dashboard.");
       setTimeout(() => {
         navigate("/dashboard");
-      }, 1500);
+      }, 2000);
     } finally {
       setIsSubmitting(false);
     }
@@ -106,7 +149,14 @@ const Registro = () => {
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
-    sendEmail(values);
+    const score = calculateScore(values);
+    setCalculatedScore(score);
+    setShowScore(true);
+    
+    // Aguardar 3 segundos para mostrar o score antes de enviar
+    setTimeout(() => {
+      sendEmail(values);
+    }, 3000);
   };
 
   const nextStep = async () => {
@@ -119,6 +169,55 @@ const Registro = () => {
   };
 
   const prevStep = () => setStep(step - 1);
+
+  if (showScore) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-green-50 to-white py-12 px-4 flex items-center justify-center">
+        <Card className="max-w-md mx-auto text-center shadow-lg">
+          <CardHeader>
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <img src="/lovable-uploads/b6213c32-ed1d-45af-94c8-396fc645d88e.png" alt="CoBank Logo" className="h-8 w-8" />
+              <h1 className="text-2xl font-bold text-green-800">CoBank</h1>
+            </div>
+            <CardTitle className="text-2xl text-green-900">Avaliação Concluída!</CardTitle>
+            <CardDescription>
+              Seu perfil foi analisado com sucesso
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="relative">
+              <div className="w-32 h-32 mx-auto rounded-full border-8 border-green-200 flex items-center justify-center bg-gradient-to-b from-green-100 to-green-50">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-green-700">{calculatedScore}</div>
+                  <div className="text-sm text-green-600">de 10</div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="space-y-2">
+              <h3 className="font-semibold text-gray-900">Seu Score de Sustentabilidade</h3>
+              <div className="w-full bg-gray-200 rounded-full h-3">
+                <div 
+                  className="bg-gradient-to-r from-green-500 to-emerald-600 h-3 rounded-full transition-all duration-1000"
+                  style={{ width: `${(calculatedScore / 10) * 100}%` }}
+                ></div>
+              </div>
+              <p className="text-sm text-gray-600">
+                {calculatedScore >= 8 ? "Excelente! Seu projeto tem alto potencial." :
+                 calculatedScore >= 6 ? "Muito bom! Projeto com bom potencial." :
+                 calculatedScore >= 4 ? "Bom início! Há espaço para melhorias." :
+                 "Projeto inicial. Recomendamos mais detalhamento."}
+              </p>
+            </div>
+            
+            <div className="text-sm text-gray-500">
+              Redirecionando para o dashboard...
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-white py-12 px-4">

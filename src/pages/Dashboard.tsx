@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -6,11 +7,50 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { CircleDollarSign, BarChart4, LineChart, ArrowUpRight, ArrowDownRight, Settings, Bell, LogOut, Menu, PlusCircle, ArrowRight, User, HelpCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
+interface UserData {
+  nome: string;
+  email: string;
+  telefone: string;
+  tipoGerador: string;
+  tipoPropriedade: string;
+  tamanhoArea: string;
+  descricaoProjeto: string;
+  score: number;
+  registrationDate: string;
+}
+
 const Dashboard = () => {
   const [sideNavOpen, setSideNavOpen] = useState(false);
+  const [userData, setUserData] = useState<UserData | null>(null);
+
+  useEffect(() => {
+    // Recuperar dados do usuário do localStorage
+    const storedData = localStorage.getItem('userData');
+    if (storedData) {
+      setUserData(JSON.parse(storedData));
+    }
+  }, []);
 
   const toggleSideNav = () => {
     setSideNavOpen(!sideNavOpen);
+  };
+
+  const getUserInitials = (nome: string) => {
+    return nome.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+  };
+
+  const getScoreColor = (score: number) => {
+    if (score >= 8) return "text-green-600";
+    if (score >= 6) return "text-blue-600";
+    if (score >= 4) return "text-yellow-600";
+    return "text-red-600";
+  };
+
+  const getScoreDescription = (score: number) => {
+    if (score >= 8) return "Excelente potencial";
+    if (score >= 6) return "Bom potencial";
+    if (score >= 4) return "Potencial moderado";
+    return "Potencial inicial";
   };
 
   return (
@@ -46,21 +86,15 @@ const Dashboard = () => {
                   <div className="py-6">
                     <div className="space-y-4">
                       <div className="border-l-4 border-green-500 pl-4 py-2">
-                        <p className="font-medium">Certificação aprovada!</p>
-                        <p className="text-sm text-gray-500">Sua certificação foi aprovada. Agora você pode vender seus créditos.</p>
-                        <p className="text-xs text-gray-400 mt-1">hoje às 10:45</p>
+                        <p className="font-medium">Cadastro concluído!</p>
+                        <p className="text-sm text-gray-500">Seu cadastro foi processado com sucesso. Score: {userData?.score || 0}/10</p>
+                        <p className="text-xs text-gray-400 mt-1">hoje</p>
                       </div>
                       
                       <div className="border-l-4 border-blue-500 pl-4 py-2">
-                        <p className="font-medium">Novo comprador disponível</p>
-                        <p className="text-sm text-gray-500">Um novo comprador está interessado em créditos como os seus.</p>
-                        <p className="text-xs text-gray-400 mt-1">ontem às 14:30</p>
-                      </div>
-                      
-                      <div className="border-l-4 border-gray-300 pl-4 py-2">
-                        <p className="font-medium">Mercado em alta</p>
-                        <p className="text-sm text-gray-500">O valor médio dos créditos aumentou 5% esta semana.</p>
-                        <p className="text-xs text-gray-400 mt-1">3 dias atrás</p>
+                        <p className="font-medium">Bem-vindo ao CoBank!</p>
+                        <p className="text-sm text-gray-500">Explore suas opções de créditos de carbono.</p>
+                        <p className="text-xs text-gray-400 mt-1">hoje</p>
                       </div>
                     </div>
                   </div>
@@ -83,11 +117,18 @@ const Dashboard = () => {
                   <div className="py-6">
                     <div className="flex items-center gap-4 mb-6 pb-6 border-b">
                       <div className="w-12 h-12 rounded-full bg-green-200 flex items-center justify-center">
-                        <span className="text-green-700 font-medium">TB</span>
+                        <span className="text-green-700 font-medium">
+                          {userData ? getUserInitials(userData.nome) : 'TB'}
+                        </span>
                       </div>
                       <div>
-                        <p className="font-medium">Thiago Bonini</p>
-                        <p className="text-sm text-gray-500">thiago@cobank.com.br</p>
+                        <p className="font-medium">{userData?.nome || 'Thiago Bonini'}</p>
+                        <p className="text-sm text-gray-500">{userData?.email || 'thiago@cobank.com.br'}</p>
+                        {userData && (
+                          <p className="text-xs text-gray-400">
+                            Score: <span className={getScoreColor(userData.score)}>{userData.score}/10</span>
+                          </p>
+                        )}
                       </div>
                     </div>
                     
@@ -222,9 +263,58 @@ const Dashboard = () => {
         <div className="flex-1 overflow-auto p-6">
           <div className="max-w-6xl mx-auto">
             <div className="mb-6">
-              <h2 className="text-2xl font-bold">Olá, Thiago!</h2>
+              <h2 className="text-2xl font-bold">
+                Olá, {userData ? userData.nome.split(' ')[0] : 'Thiago'}!
+              </h2>
               <p className="text-gray-500">Bem-vindo ao seu painel de gerenciamento de créditos de carbono.</p>
             </div>
+
+            {/* Score Card - only show if user has registered */}
+            {userData && (
+              <Card className="mb-6 overflow-hidden border-l-4 border-green-500">
+                <CardHeader className="bg-gradient-to-r from-green-50 to-emerald-50">
+                  <CardTitle className="flex items-center justify-between">
+                    <span>Seu Score de Sustentabilidade</span>
+                    <span className={`text-2xl font-bold ${getScoreColor(userData.score)}`}>
+                      {userData.score}/10
+                    </span>
+                  </CardTitle>
+                  <CardDescription>
+                    {getScoreDescription(userData.score)}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="p-4">
+                  <div className="w-full bg-gray-200 rounded-full h-3 mb-4">
+                    <div 
+                      className="bg-gradient-to-r from-green-500 to-emerald-600 h-3 rounded-full transition-all duration-1000"
+                      style={{ width: `${(userData.score / 10) * 100}%` }}
+                    ></div>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <p className="text-gray-500">Tipo de Propriedade:</p>
+                      <p className="font-medium capitalize">{userData.tipoPropriedade}</p>
+                    </div>
+                    <div>
+                      <p className="text-gray-500">Área:</p>
+                      <p className="font-medium">{userData.tamanhoArea} hectares</p>
+                    </div>
+                    <div>
+                      <p className="text-gray-500">Tipo de Gerador:</p>
+                      <p className="font-medium">
+                        {userData.tipoGerador === 'individual' ? 'Pessoa Física' : 'Empresa'}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-gray-500">Data de Cadastro:</p>
+                      <p className="font-medium">
+                        {new Date(userData.registrationDate).toLocaleDateString('pt-BR')}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
 
             {/* Main card - Balance */}
             <Card className="mb-6 overflow-hidden">
@@ -232,7 +322,9 @@ const Dashboard = () => {
                 <div className="flex justify-between items-center">
                   <div>
                     <p className="text-green-100">Saldo total de créditos</p>
-                    <h3 className="text-3xl font-bold mt-1">150 tCO₂e</h3>
+                    <h3 className="text-3xl font-bold mt-1">
+                      {userData ? Math.round(userData.score * 15) : 150} tCO₂e
+                    </h3>
                   </div>
                   <CircleDollarSign className="h-12 w-12 opacity-80" />
                 </div>
@@ -251,17 +343,23 @@ const Dashboard = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="p-4 rounded-lg bg-gray-50">
                     <p className="text-sm text-gray-500">Certificados</p>
-                    <p className="text-xl font-semibold mt-1">120 tCO₂e</p>
+                    <p className="text-xl font-semibold mt-1">
+                      {userData ? Math.round(userData.score * 12) : 120} tCO₂e
+                    </p>
                     <p className="text-xs text-green-600 mt-1">Validado</p>
                   </div>
                   <div className="p-4 rounded-lg bg-gray-50">
                     <p className="text-sm text-gray-500">Pendentes</p>
-                    <p className="text-xl font-semibold mt-1">30 tCO₂e</p>
+                    <p className="text-xl font-semibold mt-1">
+                      {userData ? Math.round(userData.score * 3) : 30} tCO₂e
+                    </p>
                     <p className="text-xs text-amber-600 mt-1">Em certificação</p>
                   </div>
                   <div className="p-4 rounded-lg bg-gray-50">
                     <p className="text-sm text-gray-500">Valor estimado</p>
-                    <p className="text-xl font-semibold mt-1">R$ 22.500</p>
+                    <p className="text-xl font-semibold mt-1">
+                      R$ {userData ? (userData.score * 15 * 150).toLocaleString('pt-BR') : '22.500'}
+                    </p>
                     <p className="text-xs text-blue-600 mt-1">R$ 150/tCO₂e</p>
                   </div>
                 </div>
@@ -368,53 +466,59 @@ const Dashboard = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <div className="border rounded-lg p-4 flex justify-between items-center">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                            <ArrowUpRight className="h-5 w-5 text-green-600" />
+                      {userData ? (
+                        <div className="border rounded-lg p-4 flex justify-between items-center">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                              <ArrowUpRight className="h-5 w-5 text-green-600" />
+                            </div>
+                            <div>
+                              <p className="font-medium">Cadastro inicial concluído</p>
+                              <p className="text-xs text-gray-500">
+                                {new Date(userData.registrationDate).toLocaleDateString('pt-BR')}
+                              </p>
+                            </div>
                           </div>
-                          <div>
-                            <p className="font-medium">Venda para EcoEnergy Brasil</p>
-                            <p className="text-xs text-gray-500">15/05/2025</p>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <p className="font-medium text-green-600">+R$ 15.000</p>
-                          <p className="text-xs text-gray-500">100 tCO₂e a R$ 150/tCO₂e</p>
-                        </div>
-                      </div>
-                      
-                      <div className="border rounded-lg p-4 flex justify-between items-center">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                            <ArrowDownRight className="h-5 w-5 text-blue-600" />
-                          </div>
-                          <div>
-                            <p className="font-medium">Compra de Terra Sustentável</p>
-                            <p className="text-xs text-gray-500">28/04/2025</p>
+                          <div className="text-right">
+                            <p className="font-medium text-green-600">Score: {userData.score}/10</p>
+                            <p className="text-xs text-gray-500">{Math.round(userData.score * 15)} tCO₂e estimados</p>
                           </div>
                         </div>
-                        <div className="text-right">
-                          <p className="font-medium text-blue-600">-R$ 7.250</p>
-                          <p className="text-xs text-gray-500">50 tCO₂e a R$ 145/tCO₂e</p>
-                        </div>
-                      </div>
-                      
-                      <div className="border rounded-lg p-4 flex justify-between items-center">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                            <ArrowUpRight className="h-5 w-5 text-green-600" />
+                      ) : (
+                        <>
+                          <div className="border rounded-lg p-4 flex justify-between items-center">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                <ArrowUpRight className="h-5 w-5 text-green-600" />
+                              </div>
+                              <div>
+                                <p className="font-medium">Venda para EcoEnergy Brasil</p>
+                                <p className="text-xs text-gray-500">15/05/2025</p>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <p className="font-medium text-green-600">+R$ 15.000</p>
+                              <p className="text-xs text-gray-500">100 tCO₂e a R$ 150/tCO₂e</p>
+                            </div>
                           </div>
-                          <div>
-                            <p className="font-medium">Venda para Green Future</p>
-                            <p className="text-xs text-gray-500">10/04/2025</p>
+                          
+                          <div className="border rounded-lg p-4 flex justify-between items-center">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                <ArrowDownRight className="h-5 w-5 text-blue-600" />
+                              </div>
+                              <div>
+                                <p className="font-medium">Compra de Terra Sustentável</p>
+                                <p className="text-xs text-gray-500">28/04/2025</p>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <p className="font-medium text-blue-600">-R$ 7.250</p>
+                              <p className="text-xs text-gray-500">50 tCO₂e a R$ 145/tCO₂e</p>
+                            </div>
                           </div>
-                        </div>
-                        <div className="text-right">
-                          <p className="font-medium text-green-600">+R$ 21.750</p>
-                          <p className="text-xs text-gray-500">150 tCO₂e a R$ 145/tCO₂e</p>
-                        </div>
-                      </div>
+                        </>
+                      )}
                       
                       <Button variant="outline" className="w-full">
                         Ver histórico completo
@@ -433,35 +537,42 @@ const Dashboard = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <div className="border rounded-lg p-4">
-                        <div className="flex justify-between items-center mb-2">
-                          <h4 className="font-semibold">Reflorestamento - Fazenda Esperança</h4>
-                          <span className="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
-                            Ativo
-                          </span>
+                      {userData && (
+                        <div className="border rounded-lg p-4">
+                          <div className="flex justify-between items-center mb-2">
+                            <h4 className="font-semibold">
+                              {userData.tipoPropriedade === 'floresta' ? 'Reflorestamento' : 
+                               userData.tipoPropriedade === 'energia' ? 'Energia Renovável' :
+                               userData.tipoPropriedade === 'agropecuaria' ? 'Agropecuária Sustentável' :
+                               'Projeto Sustentável'} - {userData.nome.split(' ')[0]}
+                            </h4>
+                            <span className="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">
+                              Ativo
+                            </span>
+                          </div>
+                          <p className="text-sm text-gray-600 mb-3">
+                            {userData.descricaoProjeto.slice(0, 100)}...
+                          </p>
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
+                            <div>
+                              <p className="text-gray-500">Tipo</p>
+                              <p className="font-medium capitalize">{userData.tipoPropriedade}</p>
+                            </div>
+                            <div>
+                              <p className="text-gray-500">Área</p>
+                              <p className="font-medium">{userData.tamanhoArea} ha</p>
+                            </div>
+                            <div>
+                              <p className="text-gray-500">Créditos Est.</p>
+                              <p className="font-medium">{Math.round(userData.score * 15)} tCO₂e</p>
+                            </div>
+                            <div>
+                              <p className="text-gray-500">Score</p>
+                              <p className={`font-medium ${getScoreColor(userData.score)}`}>{userData.score}/10</p>
+                            </div>
+                          </div>
                         </div>
-                        <p className="text-sm text-gray-600 mb-3">
-                          Projeto de reflorestamento com 50 hectares de mata nativa.
-                        </p>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm">
-                          <div>
-                            <p className="text-gray-500">Localização</p>
-                            <p className="font-medium">MG, Brasil</p>
-                          </div>
-                          <div>
-                            <p className="text-gray-500">Início</p>
-                            <p className="font-medium">Jan/2024</p>
-                          </div>
-                          <div>
-                            <p className="text-gray-500">Créditos</p>
-                            <p className="font-medium">120 tCO₂e</p>
-                          </div>
-                          <div>
-                            <p className="text-gray-500">Status</p>
-                            <p className="font-medium">Certificado</p>
-                          </div>
-                        </div>
-                      </div>
+                      )}
                       
                       <div className="border rounded-lg p-4">
                         <div className="flex justify-between items-center mb-2">
