@@ -15,6 +15,7 @@ const Index = () => {
           </div>
           <nav className="hidden md:flex items-center gap-6">
             <Link to="/" className="text-green-800 hover:text-green-600">Início</Link>
+            <Link to="/mapa" className="text-green-800 hover:text-green-600">Mapa</Link>
             <Link to="/contato" className="text-green-800 hover:text-green-600">Contato</Link>
             <Link to="/dashboard" className="text-green-800 hover:text-green-600 font-medium">Dashboard</Link>
           </nav>
@@ -156,6 +157,7 @@ const Index = () => {
               <h3 className="font-semibold text-gray-800 mb-4">Links Rápidos</h3>
               <ul className="space-y-2">
                 <li><Link to="/" className="text-gray-600 hover:text-green-600">Início</Link></li>
+                <li><Link to="/mapa" className="text-gray-600 hover:text-green-600">Mapa</Link></li>
                 <li><Link to="/contato" className="text-gray-600 hover:text-green-600">Contato</Link></li>
                 <li><Link to="/dashboard" className="text-gray-600 hover:text-green-600">Dashboard</Link></li>
               </ul>

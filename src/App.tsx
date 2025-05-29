@@ -12,6 +12,7 @@ import MobileDashboard from "./pages/MobileDashboard";
 import Vender from "./pages/Vender";
 import Comprar from "./pages/Comprar";
 import Investir from "./pages/Investir";
+import MapaBrasil from "./pages/MapaBrasil";
 import { useState, useEffect } from "react";
 
 const queryClient = new QueryClient();
