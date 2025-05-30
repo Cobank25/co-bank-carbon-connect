@@ -14,6 +14,7 @@ const MapaBrasil = () => {
   const [mapboxToken, setMapboxToken] = useState('');
   const [showTokenInput, setShowTokenInput] = useState(true);
   const [mapError, setMapError] = useState<string | null>(null);
+  const [shouldInitializeMap, setShouldInitializeMap] = useState(false);
 
   const regionsData = {
     som: {
@@ -42,12 +43,28 @@ const MapaBrasil = () => {
     }
   };
 
+  // Efeito para inicializar o mapa após o container estar disponível
+  useEffect(() => {
+    if (shouldInitializeMap && !showTokenInput && mapboxToken) {
+      console.log('useEffect: Inicializando mapa após container estar disponível');
+      initializeMap(mapboxToken);
+      setShouldInitializeMap(false);
+    }
+  }, [shouldInitializeMap, showTokenInput, mapboxToken]);
+
   const initializeMap = (token: string) => {
     console.log('Inicializando mapa com token:', token.substring(0, 20) + '...');
     
     if (!mapContainer.current) {
-      console.error('Container do mapa não encontrado');
-      setMapError('Container do mapa não encontrado');
+      console.error('Container do mapa não encontrado, tentando novamente...');
+      setTimeout(() => {
+        if (mapContainer.current) {
+          console.log('Container encontrado na segunda tentativa');
+          initializeMap(token);
+        } else {
+          setMapError('Container do mapa não pôde ser criado');
+        }
+      }, 100);
       return;
     }
 
@@ -164,7 +181,7 @@ const MapaBrasil = () => {
       console.log('Submetendo token...');
       setMapError(null);
       setShowTokenInput(false);
-      initializeMap(mapboxToken);
+      setShouldInitializeMap(true);
     } else {
       setMapError('Por favor, insira um token válido');
     }
