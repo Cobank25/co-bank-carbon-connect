@@ -13,6 +13,7 @@ const MapaBrasil = () => {
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
   const [mapboxToken, setMapboxToken] = useState('');
   const [showTokenInput, setShowTokenInput] = useState(true);
+  const [mapError, setMapError] = useState<string | null>(null);
 
   const regionsData = {
     som: {
@@ -42,104 +43,130 @@ const MapaBrasil = () => {
   };
 
   const initializeMap = (token: string) => {
-    if (!mapContainer.current) return;
-
-    mapboxgl.accessToken = token;
+    console.log('Inicializando mapa com token:', token.substring(0, 20) + '...');
     
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/dark-v11',
-      center: [-47.8825, -15.7942],
-      zoom: 4,
-      pitch: 45,
-      bearing: 0,
-      antialias: true
-    });
+    if (!mapContainer.current) {
+      console.error('Container do mapa não encontrado');
+      setMapError('Container do mapa não encontrado');
+      return;
+    }
 
-    // Add navigation controls
-    map.current.addControl(
-      new mapboxgl.NavigationControl({
-        visualizePitch: true,
-      }),
-      'top-right'
-    );
-
-    map.current.on('load', () => {
-      // Add terrain and atmosphere
-      map.current?.addSource('mapbox-dem', {
-        type: 'raster-dem',
-        url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
-        tileSize: 512,
-        maxzoom: 14
+    try {
+      mapboxgl.accessToken = token;
+      console.log('Token configurado, criando mapa...');
+      
+      map.current = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: 'mapbox://styles/mapbox/dark-v11',
+        center: [-47.8825, -15.7942],
+        zoom: 4,
+        pitch: 45,
+        bearing: 0,
+        antialias: true
       });
 
-      map.current?.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
+      console.log('Mapa criado, adicionando controles...');
 
-      map.current?.setFog({
-        color: 'rgb(10, 20, 30)',
-        'high-color': 'rgb(20, 40, 60)',
-        'horizon-blend': 0.02,
-      });
+      // Add navigation controls
+      map.current.addControl(
+        new mapboxgl.NavigationControl({
+          visualizePitch: true,
+        }),
+        'top-right'
+      );
 
-      // Add SOM region (Círculo BH)
-      map.current?.addSource('som-region', {
-        type: 'geojson',
-        data: {
-          type: 'Feature',
-          geometry: {
-            type: 'Point',
-            coordinates: [-43.9378, -19.9208]
-          },
-          properties: { region: 'som' }
-        }
-      });
+      map.current.on('load', () => {
+        console.log('Mapa carregado com sucesso!');
+        
+        // Add terrain and atmosphere
+        map.current?.addSource('mapbox-dem', {
+          type: 'raster-dem',
+          url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+          tileSize: 512,
+          maxzoom: 14
+        });
 
-      map.current?.addLayer({
-        id: 'som-circle',
-        type: 'circle',
-        source: 'som-region',
-        paint: {
-          'circle-radius': {
-            'base': 1.75,
-            'stops': [[5, 20], [12, 80]]
-          },
-          'circle-color': regionsData.som.color,
-          'circle-opacity': 0.6,
-          'circle-stroke-width': 3,
-          'circle-stroke-color': regionsData.som.color,
-          'circle-stroke-opacity': 1
-        }
-      });
+        map.current?.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
 
-      // Add interactive markers for each region
-      Object.entries(regionsData).forEach(([key, region]) => {
-        const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(`
-          <div class="bg-gray-900 text-white p-3 rounded-lg">
-            <h3 class="font-bold text-green-400">${region.name}</h3>
-            <p class="text-sm">${region.producers.toLocaleString()} pequenos produtores</p>
-            <p class="text-xs text-gray-300">${region.description}</p>
-          </div>
-        `);
+        map.current?.setFog({
+          color: 'rgb(10, 20, 30)',
+          'high-color': 'rgb(20, 40, 60)',
+          'horizon-blend': 0.02,
+        });
 
-        const marker = new mapboxgl.Marker({
-          color: region.color,
-          scale: 1.2
-        })
-          .setLngLat(region.coordinates as [number, number])
-          .setPopup(popup)
-          .addTo(map.current!);
+        // Add SOM region (Círculo BH)
+        map.current?.addSource('som-region', {
+          type: 'geojson',
+          data: {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [-43.9378, -19.9208]
+            },
+            properties: { region: 'som' }
+          }
+        });
 
-        marker.getElement().addEventListener('click', () => {
-          setSelectedRegion(key);
+        map.current?.addLayer({
+          id: 'som-circle',
+          type: 'circle',
+          source: 'som-region',
+          paint: {
+            'circle-radius': {
+              'base': 1.75,
+              'stops': [[5, 20], [12, 80]]
+            },
+            'circle-color': regionsData.som.color,
+            'circle-opacity': 0.6,
+            'circle-stroke-width': 3,
+            'circle-stroke-color': regionsData.som.color,
+            'circle-stroke-opacity': 1
+          }
+        });
+
+        // Add interactive markers for each region
+        Object.entries(regionsData).forEach(([key, region]) => {
+          const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(`
+            <div class="bg-gray-900 text-white p-3 rounded-lg">
+              <h3 class="font-bold text-green-400">${region.name}</h3>
+              <p class="text-sm">${region.producers.toLocaleString()} pequenos produtores</p>
+              <p class="text-xs text-gray-300">${region.description}</p>
+            </div>
+          `);
+
+          const marker = new mapboxgl.Marker({
+            color: region.color,
+            scale: 1.2
+          })
+            .setLngLat(region.coordinates as [number, number])
+            .setPopup(popup)
+            .addTo(map.current!);
+
+          marker.getElement().addEventListener('click', () => {
+            setSelectedRegion(key);
+          });
         });
       });
-    });
+
+      map.current.on('error', (e) => {
+        console.error('Erro no mapa:', e);
+        setMapError('Erro ao carregar o mapa: ' + e.error?.message || 'Erro desconhecido');
+      });
+
+    } catch (error) {
+      console.error('Erro ao inicializar mapa:', error);
+      setMapError('Erro ao inicializar o mapa: ' + (error as Error).message);
+    }
   };
 
   const handleTokenSubmit = () => {
     if (mapboxToken.trim()) {
+      console.log('Submetendo token...');
+      setMapError(null);
       setShowTokenInput(false);
       initializeMap(mapboxToken);
+    } else {
+      setMapError('Por favor, insira um token válido');
     }
   };
 
@@ -175,8 +202,23 @@ const MapaBrasil = () => {
               onChange={(e) => setMapboxToken(e.target.value)}
               className="w-full p-3 border rounded-md"
             />
+            {mapError && (
+              <div className="text-red-600 text-sm">
+                {mapError}
+              </div>
+            )}
             <Button onClick={handleTokenSubmit} className="w-full bg-green-600 hover:bg-green-700">
               Carregar Mapa
+            </Button>
+            <Button 
+              onClick={() => {
+                setMapboxToken('pk.eyJ1IjoiY29iYW5rMjUiLCJhIjoiY21iYXN6dTFqMHRscjJxcG90cTQ4b3RnaCJ9.UVFmnCyo8FUfZzBlq8BffA');
+                handleTokenSubmit();
+              }} 
+              variant="outline" 
+              className="w-full"
+            >
+              Usar Token Fornecido
             </Button>
           </CardContent>
         </Card>
@@ -193,11 +235,26 @@ const MapaBrasil = () => {
             <img src="/lovable-uploads/b6213c32-ed1d-45af-94c8-396fc645d88e.png" alt="CoBank Logo" className="h-10 w-10" />
             <h1 className="text-2xl font-bold text-green-400">CoBank - Mapa de Demanda</h1>
           </div>
-          <Button asChild variant="outline" className="border-green-500 text-green-400 hover:bg-green-500 hover:text-white">
-            <Link to="/">Voltar ao Início</Link>
-          </Button>
+          <div className="flex gap-2">
+            <Button 
+              onClick={() => setShowTokenInput(true)} 
+              variant="outline" 
+              className="border-yellow-500 text-yellow-400 hover:bg-yellow-500 hover:text-white"
+            >
+              Reconfigurar Token
+            </Button>
+            <Button asChild variant="outline" className="border-green-500 text-green-400 hover:bg-green-500 hover:text-white">
+              <Link to="/">Voltar ao Início</Link>
+            </Button>
+          </div>
         </div>
       </header>
+
+      {mapError && (
+        <div className="bg-red-600 text-white p-4 text-center">
+          {mapError}
+        </div>
+      )}
 
       <div className="flex h-[calc(100vh-80px)]">
         {/* Controls Panel */}
