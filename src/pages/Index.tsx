@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronRight, BarChart4, Users, ArrowRight, Leaf } from "lucide-react";
@@ -20,7 +21,7 @@ const Index = () => {
             <Link to="/dashboard" className="text-green-800 hover:text-green-600 font-medium">Dashboard</Link>
           </nav>
           <div className="flex gap-4">
-            <Button asChild variant="outline" className="hidden sm:flex">
+            <Button asChild variant="outline" className="hidden sm:flex text-green-600 border-green-600 hover:bg-green-50">
               <Link to="/registro">Cadastre-se</Link>
             </Button>
             <Button asChild className="bg-green-600 hover:bg-green-700">
