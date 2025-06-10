@@ -32,12 +32,13 @@ const MobileDashboard = () => {
   const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
-    // Recuperar dados do usuário do localStorage
     const storedData = localStorage.getItem('userData');
     if (storedData) {
       const parsedData = JSON.parse(storedData);
       setUserData(parsedData);
-      console.log('Dados do usuário carregados:', parsedData);
+      console.log('Dados do usuário carregados no dashboard:', parsedData);
+    } else {
+      console.log('Nenhum dado de usuário encontrado no localStorage');
     }
   }, []);
 
@@ -45,13 +46,13 @@ const MobileDashboard = () => {
     setSideNavOpen(!sideNavOpen);
   };
 
-  // Função para calcular dados padrão caso não existam dados simulados
-  const getDisplayData = () => {
+  const getDisplayData = (): SimulatedData => {
     if (userData?.simulatedData) {
+      console.log('Usando dados simulados salvos:', userData.simulatedData);
       return userData.simulatedData;
     }
     
-    // Fallback para usuários antigos ou dados de exemplo
+    // Fallback para recalcular se necessário
     if (userData?.score) {
       const area = parseFloat(userData.tamanhoArea) || 10;
       const baseCreditsPerHectare = 5;
@@ -62,21 +63,27 @@ const MobileDashboard = () => {
       const pendingCredits = totalCredits - certificatedCredits;
       const estimatedValue = totalCredits * 150;
 
-      return {
+      const fallbackData = {
         totalCredits,
         certificatedCredits,
         pendingCredits,
         estimatedValue
       };
+      
+      console.log('Recalculando dados com base no score:', fallbackData);
+      return fallbackData;
     }
     
-    // Dados padrão para usuários sem cadastro
-    return {
+    // Dados padrão
+    const defaultData = {
       totalCredits: 150,
       certificatedCredits: 120,
       pendingCredits: 30,
       estimatedValue: 22500
     };
+    
+    console.log('Usando dados padrão:', defaultData);
+    return defaultData;
   };
 
   const displayData = getDisplayData();
@@ -87,25 +94,20 @@ const MobileDashboard = () => {
       
       <MobileSidebar isOpen={sideNavOpen} onToggle={toggleSideNav} />
 
-      {/* Main content */}
       <div className="flex-1 overflow-auto p-4">
         <div className="mb-4">
           <h2 className="text-xl font-bold">
-            Olá, {userData ? userData.nome.split(' ')[0] : 'Thiago'}!
+            Olá, {userData ? userData.nome.split(' ')[0] : 'Usuário'}!
           </h2>
           <p className="text-gray-500 text-sm">Bem-vindo ao seu painel de créditos de carbono.</p>
         </div>
 
-        {/* Score Card - only show if user has registered */}
         {userData && <ScoreCard userData={userData} />}
 
-        {/* Balance Card */}
         <BalanceCard displayData={displayData} />
 
-        {/* Mobile Tabs */}
         <MobileTabs userData={userData} displayData={displayData} />
 
-        {/* Action buttons */}
         <ActionButtons />
       </div>
     </div>

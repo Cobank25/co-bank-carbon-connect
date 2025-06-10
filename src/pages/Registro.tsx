@@ -64,8 +64,6 @@ const Registro = () => {
   const calculateScore = (values: z.infer<typeof formSchema>) => {
     let score = 0;
     
-    // Pontuação baseada na completude e qualidade das informações
-    
     // Nome completo (1 ponto)
     if (values.nome.trim().split(' ').length >= 2) score += 1;
     
@@ -82,7 +80,7 @@ const Registro = () => {
     const area = parseFloat(values.tamanhoArea);
     if (area > 0) {
       score += 1;
-      if (area >= 10) score += 1; // Área maior = maior potencial
+      if (area >= 10) score += 1;
     }
     
     // Descrição detalhada do projeto (3 pontos)
@@ -97,26 +95,29 @@ const Registro = () => {
       score += 1;
     }
     
+    console.log('Score calculado:', score);
     return score;
   };
 
   const calculateSimulatedData = (score: number, area: number) => {
-    // Cálculo baseado no score e área
-    const baseCreditsPerHectare = 5; // Base de 5 tCO₂e por hectare
-    const scoreMultiplier = (score / 10) * 2; // Multiplicador baseado no score (0-2)
+    const baseCreditsPerHectare = 5;
+    const scoreMultiplier = (score / 10) * 2;
     
     const totalCredits = Math.round(area * baseCreditsPerHectare * (1 + scoreMultiplier));
-    const certificatedCredits = Math.round(totalCredits * 0.8); // 80% certificados
-    const pendingCredits = totalCredits - certificatedCredits; // 20% pendentes
-    const pricePerCredit = 150; // R$ 150 por tCO₂e
+    const certificatedCredits = Math.round(totalCredits * 0.8);
+    const pendingCredits = totalCredits - certificatedCredits;
+    const pricePerCredit = 150;
     const estimatedValue = totalCredits * pricePerCredit;
 
-    return {
+    const calculatedData = {
       totalCredits,
       certificatedCredits,
       pendingCredits,
       estimatedValue
     };
+    
+    console.log('Dados simulados calculados:', calculatedData);
+    return calculatedData;
   };
 
   const sendEmail = async (values: z.infer<typeof formSchema>) => {
@@ -148,25 +149,28 @@ const Registro = () => {
         console.log("EmailJS não está configurado. Dados que seriam enviados:", templateParams);
       }
       
-      // Salvar dados no localStorage para usar no dashboard
-      localStorage.setItem('userData', JSON.stringify({
+      // Salvar dados completos no localStorage
+      const userData = {
         ...values,
         score: calculatedScore,
         simulatedData: simulatedData,
         registrationDate: new Date().toISOString()
-      }));
+      };
+      
+      console.log('Salvando dados no localStorage:', userData);
+      localStorage.setItem('userData', JSON.stringify(userData));
       
       toast.success("Cadastro realizado com sucesso! Redirecionando para o dashboard...");
       
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/mobile-dashboard");
       }, 2000);
       
     } catch (error) {
       console.error("Erro ao enviar email:", error);
       toast.error("Erro ao enviar o formulário, mas você será redirecionado para o dashboard.");
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/mobile-dashboard");
       }, 2000);
     } finally {
       setIsSubmitting(false);
@@ -174,16 +178,15 @@ const Registro = () => {
   };
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    console.log('Dados do formulário:', values);
     const score = calculateScore(values);
-    const area = parseFloat(values.tamanhoArea) || 10; // Default 10 hectares se não informado
+    const area = parseFloat(values.tamanhoArea) || 10;
     const simData = calculateSimulatedData(score, area);
     
     setCalculatedScore(score);
     setSimulatedData(simData);
     setShowScore(true);
     
-    // Aguardar 3 segundos para mostrar o score antes de enviar
     setTimeout(() => {
       sendEmail(values);
     }, 3000);
