@@ -120,7 +120,7 @@ const Registro = () => {
     return calculatedData;
   };
 
-  const sendEmail = async (values: z.infer<typeof formSchema>) => {
+  const sendEmail = async (values: z.infer<typeof formSchema>, score: number, simData: any) => {
     setIsSubmitting(true);
     
     const templateParams = {
@@ -132,7 +132,7 @@ const Registro = () => {
       tipo_propriedade: values.tipoPropriedade,
       tamanho_area: values.tamanhoArea + " hectares",
       descricao_projeto: values.descricaoProjeto,
-      score: calculatedScore,
+      score: score,
     };
     
     try {
@@ -152,8 +152,8 @@ const Registro = () => {
       // Salvar dados completos no localStorage
       const userData = {
         ...values,
-        score: calculatedScore,
-        simulatedData: simulatedData,
+        score: score,
+        simulatedData: simData,
         registrationDate: new Date().toISOString()
       };
       
@@ -188,7 +188,7 @@ const Registro = () => {
     setShowScore(true);
     
     setTimeout(() => {
-      sendEmail(values);
+      sendEmail(values, score, simData);
     }, 3000);
   };
 

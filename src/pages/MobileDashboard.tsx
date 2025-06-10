@@ -47,13 +47,13 @@ const MobileDashboard = () => {
   };
 
   const getDisplayData = (): SimulatedData => {
-    if (userData?.simulatedData) {
+    if (userData?.simulatedData && userData.simulatedData.totalCredits > 0) {
       console.log('Usando dados simulados salvos:', userData.simulatedData);
       return userData.simulatedData;
     }
     
-    // Fallback para recalcular se necessário
-    if (userData?.score) {
+    // Se não há dados simulados salvos ou são zeros, recalcular
+    if (userData?.score && userData.score > 0) {
       const area = parseFloat(userData.tamanhoArea) || 10;
       const baseCreditsPerHectare = 5;
       const scoreMultiplier = (userData.score / 10) * 2;
@@ -63,18 +63,18 @@ const MobileDashboard = () => {
       const pendingCredits = totalCredits - certificatedCredits;
       const estimatedValue = totalCredits * 150;
 
-      const fallbackData = {
+      const calculatedData = {
         totalCredits,
         certificatedCredits,
         pendingCredits,
         estimatedValue
       };
       
-      console.log('Recalculando dados com base no score:', fallbackData);
-      return fallbackData;
+      console.log('Recalculando dados com base no score:', calculatedData);
+      return calculatedData;
     }
     
-    // Dados padrão
+    // Dados padrão apenas se não há nenhum dado do usuário
     const defaultData = {
       totalCredits: 150,
       certificatedCredits: 120,
