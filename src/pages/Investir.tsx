@@ -84,11 +84,11 @@ const Investir = () => {
           
           <TabsContent value="fundos">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Card>
-                <CardHeader className="pb-2">
+              <Card className="overflow-hidden">
+                <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle>Fundo Carbono Brasil</CardTitle>
+                      <CardTitle className="text-lg">Fundo Carbono Brasil</CardTitle>
                       <CardDescription>CARB11 • Renda Variável</CardDescription>
                     </div>
                     <div className="text-right">
@@ -100,18 +100,18 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="mb-4">
+                <CardContent className="space-y-4">
+                  <div>
                     <p className="text-sm text-gray-500 mb-1">Rendimento 12 meses</p>
                     <div className="flex items-center gap-2">
                       <span className="font-semibold">+23,4%</span>
                     </div>
                   </div>
-                  <div className="flex justify-between mb-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  <div className="flex justify-between gap-3">
+                    <Button variant="outline" className="flex-1">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mb-2">
+                  <div className="mt-3">
                     <InvestmentChart 
                       data={investmentData.fundos[0].data} 
                       color={investmentData.fundos[0].color}
@@ -121,11 +121,11 @@ const Investir = () => {
                 </CardContent>
               </Card>
               
-              <Card>
-                <CardHeader className="pb-2">
+              <Card className="overflow-hidden">
+                <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle>Fundo Florestal Sustentável</CardTitle>
+                      <CardTitle className="text-lg">Fundo Florestal Sustentável</CardTitle>
                       <CardDescription>FLOR11 • Renda Variável</CardDescription>
                     </div>
                     <div className="text-right">
@@ -137,18 +137,18 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="mb-4">
+                <CardContent className="space-y-4">
+                  <div>
                     <p className="text-sm text-gray-500 mb-1">Rendimento 12 meses</p>
                     <div className="flex items-center gap-2">
                       <span className="font-semibold">+18,2%</span>
                     </div>
                   </div>
-                  <div className="flex justify-between mb-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  <div className="flex justify-between gap-3">
+                    <Button variant="outline" className="flex-1">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mb-2">
+                  <div className="mt-3">
                     <InvestmentChart 
                       data={investmentData.fundos[1].data} 
                       color={investmentData.fundos[1].color}
@@ -158,11 +158,11 @@ const Investir = () => {
                 </CardContent>
               </Card>
               
-              <Card>
-                <CardHeader className="pb-2">
+              <Card className="overflow-hidden">
+                <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle>Fundo Energia Limpa</CardTitle>
+                      <CardTitle className="text-lg">Fundo Energia Limpa</CardTitle>
                       <CardDescription>ENLP11 • Renda Variável</CardDescription>
                     </div>
                     <div className="text-right">
@@ -174,18 +174,18 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="mb-4">
+                <CardContent className="space-y-4">
+                  <div>
                     <p className="text-sm text-gray-500 mb-1">Rendimento 12 meses</p>
                     <div className="flex items-center gap-2">
                       <span className="font-semibold">+15,8%</span>
                     </div>
                   </div>
-                  <div className="flex justify-between mb-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  <div className="flex justify-between gap-3">
+                    <Button variant="outline" className="flex-1">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mb-2">
+                  <div className="mt-3">
                     <InvestmentChart 
                       data={investmentData.fundos[2].data} 
                       color={investmentData.fundos[2].color}
@@ -195,11 +195,11 @@ const Investir = () => {
                 </CardContent>
               </Card>
               
-              <Card>
-                <CardHeader className="pb-2">
+              <Card className="overflow-hidden">
+                <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle>Fundo Crédito Verde</CardTitle>
+                      <CardTitle className="text-lg">Fundo Crédito Verde</CardTitle>
                       <CardDescription>CRDV11 • Renda Fixa</CardDescription>
                     </div>
                     <div className="text-right">
@@ -211,18 +211,18 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="mb-4">
+                <CardContent className="space-y-4">
+                  <div>
                     <p className="text-sm text-gray-500 mb-1">Rendimento 12 meses</p>
                     <div className="flex items-center gap-2">
                       <span className="font-semibold">+11,2%</span>
                     </div>
                   </div>
-                  <div className="flex justify-between mb-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  <div className="flex justify-between gap-3">
+                    <Button variant="outline" className="flex-1">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mb-2">
+                  <div className="mt-3">
                     <InvestmentChart 
                       data={investmentData.fundos[3].data} 
                       color={investmentData.fundos[3].color}
@@ -236,11 +236,11 @@ const Investir = () => {
           
           <TabsContent value="empresas">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Card>
-                <CardHeader className="pb-2">
+              <Card className="overflow-hidden">
+                <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle>EcoEnergy Brasil</CardTitle>
+                      <CardTitle className="text-lg">EcoEnergy Brasil</CardTitle>
                       <CardDescription>ECOE3 • Energia Renovável</CardDescription>
                     </div>
                     <div className="text-right">
@@ -252,18 +252,18 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="mb-4">
+                <CardContent className="space-y-4">
+                  <div>
                     <p className="text-sm text-gray-500 mb-1">Variação 12 meses</p>
                     <div className="flex items-center gap-2">
                       <span className="font-semibold">+28,4%</span>
                     </div>
                   </div>
-                  <div className="flex justify-between mb-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  <div className="flex justify-between gap-3">
+                    <Button variant="outline" className="flex-1">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mb-2">
+                  <div className="mt-3">
                     <InvestmentChart 
                       data={investmentData.empresas[0].data} 
                       color={investmentData.empresas[0].color}
@@ -273,11 +273,11 @@ const Investir = () => {
                 </CardContent>
               </Card>
               
-              <Card>
-                <CardHeader className="pb-2">
+              <Card className="overflow-hidden">
+                <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle>Green Future</CardTitle>
+                      <CardTitle className="text-lg">Green Future</CardTitle>
                       <CardDescription>GRFT3 • Tecnologia Verde</CardDescription>
                     </div>
                     <div className="text-right">
@@ -289,18 +289,18 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="mb-4">
+                <CardContent className="space-y-4">
+                  <div>
                     <p className="text-sm text-gray-500 mb-1">Variação 12 meses</p>
                     <div className="flex items-center gap-2">
                       <span className="font-semibold">+34,5%</span>
                     </div>
                   </div>
-                  <div className="flex justify-between mb-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  <div className="flex justify-between gap-3">
+                    <Button variant="outline" className="flex-1">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mb-2">
+                  <div className="mt-3">
                     <InvestmentChart 
                       data={investmentData.empresas[1].data} 
                       color={investmentData.empresas[1].color}
@@ -310,11 +310,11 @@ const Investir = () => {
                 </CardContent>
               </Card>
               
-              <Card>
-                <CardHeader className="pb-2">
+              <Card className="overflow-hidden">
+                <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle>Terra Sustentável</CardTitle>
+                      <CardTitle className="text-lg">Terra Sustentável</CardTitle>
                       <CardDescription>TRRA3 • Agronegócio</CardDescription>
                     </div>
                     <div className="text-right">
@@ -326,18 +326,18 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="mb-4">
+                <CardContent className="space-y-4">
+                  <div>
                     <p className="text-sm text-gray-500 mb-1">Variação 12 meses</p>
                     <div className="flex items-center gap-2">
                       <span className="font-semibold">+19,7%</span>
                     </div>
                   </div>
-                  <div className="flex justify-between mb-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  <div className="flex justify-between gap-3">
+                    <Button variant="outline" className="flex-1">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mb-2">
+                  <div className="mt-3">
                     <InvestmentChart 
                       data={investmentData.empresas[2].data} 
                       color={investmentData.empresas[2].color}
@@ -351,11 +351,11 @@ const Investir = () => {
           
           <TabsContent value="etfs">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Card>
-                <CardHeader className="pb-2">
+              <Card className="overflow-hidden">
+                <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle>ETF Créditos de Carbono Global</CardTitle>
+                      <CardTitle className="text-lg">ETF Créditos de Carbono Global</CardTitle>
                       <CardDescription>CARB11 • Global</CardDescription>
                     </div>
                     <div className="text-right">
@@ -367,18 +367,18 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="mb-4">
+                <CardContent className="space-y-4">
+                  <div>
                     <p className="text-sm text-gray-500 mb-1">Variação 12 meses</p>
                     <div className="flex items-center gap-2">
                       <span className="font-semibold">+20,8%</span>
                     </div>
                   </div>
-                  <div className="flex justify-between mb-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  <div className="flex justify-between gap-3">
+                    <Button variant="outline" className="flex-1">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mb-2">
+                  <div className="mt-3">
                     <InvestmentChart 
                       data={investmentData.etfs[0].data} 
                       color={investmentData.etfs[0].color}
@@ -388,11 +388,11 @@ const Investir = () => {
                 </CardContent>
               </Card>
               
-              <Card>
-                <CardHeader className="pb-2">
+              <Card className="overflow-hidden">
+                <CardHeader className="pb-3">
                   <div className="flex justify-between items-start">
                     <div>
-                      <CardTitle>ETF Energia Verde</CardTitle>
+                      <CardTitle className="text-lg">ETF Energia Verde</CardTitle>
                       <CardDescription>ENRG11 • Energia</CardDescription>
                     </div>
                     <div className="text-right">
@@ -404,18 +404,18 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="mb-4">
+                <CardContent className="space-y-4">
+                  <div>
                     <p className="text-sm text-gray-500 mb-1">Variação 12 meses</p>
                     <div className="flex items-center gap-2">
                       <span className="font-semibold">+16,2%</span>
                     </div>
                   </div>
-                  <div className="flex justify-between mb-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  <div className="flex justify-between gap-3">
+                    <Button variant="outline" className="flex-1">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mb-2">
+                  <div className="mt-3">
                     <InvestmentChart 
                       data={investmentData.etfs[1].data} 
                       color={investmentData.etfs[1].color}
@@ -472,3 +472,5 @@ const Investir = () => {
 };
 
 export default Investir;
+
+</edits_to_apply>

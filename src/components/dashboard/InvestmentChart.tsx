@@ -25,11 +25,11 @@ const InvestmentChart = ({ data, color, height = 120 }: InvestmentChartProps) =>
   return (
     <div 
       style={{ height: `${height}px` }} 
-      className="bg-gradient-to-b from-gray-50 to-white rounded-lg border border-gray-200 shadow-sm"
+      className="bg-gradient-to-b from-gray-50 to-white rounded-lg border border-gray-200 shadow-sm overflow-hidden"
     >
-      <ChartContainer config={chartConfig}>
+      <ChartContainer config={chartConfig} className="w-full h-full">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data} margin={{ top: 10, right: 10, left: 10, bottom: 10 }}>
+          <LineChart data={data} margin={{ top: 5, right: 5, left: 5, bottom: 5 }}>
             <defs>
               <linearGradient id={`gradient-${color.replace('#', '')}`} x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor={color} stopOpacity={0.3}/>
@@ -38,15 +38,17 @@ const InvestmentChart = ({ data, color, height = 120 }: InvestmentChartProps) =>
             </defs>
             <XAxis 
               dataKey="date" 
-              tick={{ fontSize: 10, fill: '#6b7280' }}
+              tick={{ fontSize: 9, fill: '#6b7280' }}
               axisLine={false}
               tickLine={false}
+              height={20}
             />
             <YAxis 
-              tick={{ fontSize: 10, fill: '#6b7280' }}
+              tick={{ fontSize: 9, fill: '#6b7280' }}
               axisLine={false}
               tickLine={false}
               domain={['dataMin - 1', 'dataMax + 1']}
+              width={35}
             />
             <ChartTooltip 
               content={<ChartTooltipContent />}
@@ -56,9 +58,9 @@ const InvestmentChart = ({ data, color, height = 120 }: InvestmentChartProps) =>
               type="monotone" 
               dataKey="value" 
               stroke={color}
-              strokeWidth={2.5}
+              strokeWidth={2}
               dot={false}
-              activeDot={{ r: 4, stroke: color, strokeWidth: 2, fill: '#fff' }}
+              activeDot={{ r: 3, stroke: color, strokeWidth: 2, fill: '#fff' }}
               fill={`url(#gradient-${color.replace('#', '')})`}
             />
           </LineChart>
