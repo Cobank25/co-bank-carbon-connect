@@ -1,12 +1,15 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowLeft, TrendingUp, TrendingDown, BarChart4, Search } from "lucide-react";
+import { ArrowLeft, TrendingUp, TrendingDown, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import InvestmentChart from "@/components/dashboard/InvestmentChart";
+import { getInvestmentData } from "@/utils/marketData";
 
 const Investir = () => {
+  const investmentData = getInvestmentData();
+
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="container mx-auto max-w-5xl">
@@ -104,8 +107,12 @@ const Investir = () => {
                       <span className="font-semibold">+23,4%</span>
                     </div>
                   </div>
-                  <div className="h-16 flex items-center justify-center border-t border-b my-2">
-                    <BarChart4 className="h-12 w-12 text-gray-300" />
+                  <div className="mb-4">
+                    <InvestmentChart 
+                      data={investmentData.fundos[0].data} 
+                      color={investmentData.fundos[0].color}
+                      height={80}
+                    />
                   </div>
                   <div className="flex justify-between mt-4">
                     <Button variant="outline">Detalhes</Button>
@@ -137,8 +144,12 @@ const Investir = () => {
                       <span className="font-semibold">+18,2%</span>
                     </div>
                   </div>
-                  <div className="h-16 flex items-center justify-center border-t border-b my-2">
-                    <BarChart4 className="h-12 w-12 text-gray-300" />
+                  <div className="mb-4">
+                    <InvestmentChart 
+                      data={investmentData.fundos[1].data} 
+                      color={investmentData.fundos[1].color}
+                      height={80}
+                    />
                   </div>
                   <div className="flex justify-between mt-4">
                     <Button variant="outline">Detalhes</Button>
@@ -170,8 +181,12 @@ const Investir = () => {
                       <span className="font-semibold">+15,8%</span>
                     </div>
                   </div>
-                  <div className="h-16 flex items-center justify-center border-t border-b my-2">
-                    <BarChart4 className="h-12 w-12 text-gray-300" />
+                  <div className="mb-4">
+                    <InvestmentChart 
+                      data={investmentData.fundos[2].data} 
+                      color={investmentData.fundos[2].color}
+                      height={80}
+                    />
                   </div>
                   <div className="flex justify-between mt-4">
                     <Button variant="outline">Detalhes</Button>
@@ -203,8 +218,12 @@ const Investir = () => {
                       <span className="font-semibold">+11,2%</span>
                     </div>
                   </div>
-                  <div className="h-16 flex items-center justify-center border-t border-b my-2">
-                    <BarChart4 className="h-12 w-12 text-gray-300" />
+                  <div className="mb-4">
+                    <InvestmentChart 
+                      data={investmentData.fundos[3].data} 
+                      color={investmentData.fundos[3].color}
+                      height={80}
+                    />
                   </div>
                   <div className="flex justify-between mt-4">
                     <Button variant="outline">Detalhes</Button>
@@ -240,8 +259,12 @@ const Investir = () => {
                       <span className="font-semibold">+28,4%</span>
                     </div>
                   </div>
-                  <div className="h-16 flex items-center justify-center border-t border-b my-2">
-                    <BarChart4 className="h-12 w-12 text-gray-300" />
+                  <div className="mb-4">
+                    <InvestmentChart 
+                      data={investmentData.empresas[0].data} 
+                      color={investmentData.empresas[0].color}
+                      height={80}
+                    />
                   </div>
                   <div className="flex justify-between mt-4">
                     <Button variant="outline">Detalhes</Button>
@@ -273,8 +296,12 @@ const Investir = () => {
                       <span className="font-semibold">+34,5%</span>
                     </div>
                   </div>
-                  <div className="h-16 flex items-center justify-center border-t border-b my-2">
-                    <BarChart4 className="h-12 w-12 text-gray-300" />
+                  <div className="mb-4">
+                    <InvestmentChart 
+                      data={investmentData.empresas[1].data} 
+                      color={investmentData.empresas[1].color}
+                      height={80}
+                    />
                   </div>
                   <div className="flex justify-between mt-4">
                     <Button variant="outline">Detalhes</Button>
@@ -306,8 +333,12 @@ const Investir = () => {
                       <span className="font-semibold">+19,7%</span>
                     </div>
                   </div>
-                  <div className="h-16 flex items-center justify-center border-t border-b my-2">
-                    <BarChart4 className="h-12 w-12 text-gray-300" />
+                  <div className="mb-4">
+                    <InvestmentChart 
+                      data={investmentData.empresas[2].data} 
+                      color={investmentData.empresas[2].color}
+                      height={80}
+                    />
                   </div>
                   <div className="flex justify-between mt-4">
                     <Button variant="outline">Detalhes</Button>
@@ -343,8 +374,12 @@ const Investir = () => {
                       <span className="font-semibold">+20,8%</span>
                     </div>
                   </div>
-                  <div className="h-16 flex items-center justify-center border-t border-b my-2">
-                    <BarChart4 className="h-12 w-12 text-gray-300" />
+                  <div className="mb-4">
+                    <InvestmentChart 
+                      data={investmentData.etfs[0].data} 
+                      color={investmentData.etfs[0].color}
+                      height={80}
+                    />
                   </div>
                   <div className="flex justify-between mt-4">
                     <Button variant="outline">Detalhes</Button>
@@ -376,8 +411,12 @@ const Investir = () => {
                       <span className="font-semibold">+16,2%</span>
                     </div>
                   </div>
-                  <div className="h-16 flex items-center justify-center border-t border-b my-2">
-                    <BarChart4 className="h-12 w-12 text-gray-300" />
+                  <div className="mb-4">
+                    <InvestmentChart 
+                      data={investmentData.etfs[1].data} 
+                      color={investmentData.etfs[1].color}
+                      height={80}
+                    />
                   </div>
                   <div className="flex justify-between mt-4">
                     <Button variant="outline">Detalhes</Button>
