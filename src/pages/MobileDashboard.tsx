@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -5,6 +6,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { CircleDollarSign, BarChart4, LineChart, ArrowUpRight, ArrowDownRight, Bell, Menu, PlusCircle, ArrowRight, User } from "lucide-react";
 import { Link } from "react-router-dom";
+
+interface SimulatedData {
+  totalCredits: number;
+  certificatedCredits: number;
+  pendingCredits: number;
+  estimatedValue: number;
+}
 
 interface UserData {
   nome: string;
@@ -15,6 +23,7 @@ interface UserData {
   tamanhoArea: string;
   descricaoProjeto: string;
   score: number;
+  simulatedData?: SimulatedData;
   registrationDate: string;
 }
 
@@ -26,7 +35,9 @@ const MobileDashboard = () => {
     // Recuperar dados do usuário do localStorage
     const storedData = localStorage.getItem('userData');
     if (storedData) {
-      setUserData(JSON.parse(storedData));
+      const parsedData = JSON.parse(storedData);
+      setUserData(parsedData);
+      console.log('Dados do usuário carregados:', parsedData);
     }
   }, []);
 
@@ -37,6 +48,42 @@ const MobileDashboard = () => {
   const getUserInitials = (nome: string) => {
     return nome.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
   };
+
+  // Função para calcular dados padrão caso não existam dados simulados
+  const getDisplayData = () => {
+    if (userData?.simulatedData) {
+      return userData.simulatedData;
+    }
+    
+    // Fallback para usuários antigos ou dados de exemplo
+    if (userData?.score) {
+      const area = parseFloat(userData.tamanhoArea) || 10;
+      const baseCreditsPerHectare = 5;
+      const scoreMultiplier = (userData.score / 10) * 2;
+      
+      const totalCredits = Math.round(area * baseCreditsPerHectare * (1 + scoreMultiplier));
+      const certificatedCredits = Math.round(totalCredits * 0.8);
+      const pendingCredits = totalCredits - certificatedCredits;
+      const estimatedValue = totalCredits * 150;
+
+      return {
+        totalCredits,
+        certificatedCredits,
+        pendingCredits,
+        estimatedValue
+      };
+    }
+    
+    // Dados padrão para usuários sem cadastro
+    return {
+      totalCredits: 150,
+      certificatedCredits: 120,
+      pendingCredits: 30,
+      estimatedValue: 22500
+    };
+  };
+
+  const displayData = getDisplayData();
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -216,7 +263,7 @@ const MobileDashboard = () => {
               <div>
                 <p className="text-green-100 text-sm">Saldo total de créditos</p>
                 <h3 className="text-2xl font-bold mt-1">
-                  {userData ? Math.round(userData.score * 15) : 150} tCO₂e
+                  {displayData.totalCredits} tCO₂e
                 </h3>
               </div>
               <CircleDollarSign className="h-10 w-10 opacity-80" />
@@ -239,21 +286,21 @@ const MobileDashboard = () => {
               <div className="p-3 rounded-lg bg-gray-50">
                 <p className="text-xs text-gray-500">Certificados</p>
                 <p className="text-lg font-semibold mt-1">
-                  {userData ? Math.round(userData.score * 12) : 120} tCO₂e
+                  {displayData.certificatedCredits} tCO₂e
                 </p>
                 <p className="text-xs text-green-600 mt-1">Validado</p>
               </div>
               <div className="p-3 rounded-lg bg-gray-50">
                 <p className="text-xs text-gray-500">Pendentes</p>
                 <p className="text-lg font-semibold mt-1">
-                  {userData ? Math.round(userData.score * 3) : 30} tCO₂e
+                  {displayData.pendingCredits} tCO₂e
                 </p>
                 <p className="text-xs text-amber-600 mt-1">Em certificação</p>
               </div>
               <div className="p-3 rounded-lg bg-gray-50">
                 <p className="text-xs text-gray-500">Valor estimado</p>
                 <p className="text-lg font-semibold mt-1">
-                  R$ {userData ? (userData.score * 15 * 150).toLocaleString('pt-BR') : '22.500'}
+                  R$ {displayData.estimatedValue.toLocaleString('pt-BR')}
                 </p>
                 <p className="text-xs text-blue-600 mt-1">R$ 150/tCO₂e</p>
               </div>
@@ -357,7 +404,7 @@ const MobileDashboard = () => {
                       </div>
                       <div className="text-right">
                         <p className="font-medium text-green-600 text-sm">Score: {userData.score}/10</p>
-                        <p className="text-xs text-gray-500">{Math.round(userData.score * 15)} tCO₂e</p>
+                        <p className="text-xs text-gray-500">{displayData.totalCredits} tCO₂e</p>
                       </div>
                     </div>
                   ) : (

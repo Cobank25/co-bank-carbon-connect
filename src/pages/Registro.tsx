@@ -40,6 +40,12 @@ const Registro = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showScore, setShowScore] = useState(false);
   const [calculatedScore, setCalculatedScore] = useState(0);
+  const [simulatedData, setSimulatedData] = useState({
+    totalCredits: 0,
+    certificatedCredits: 0,
+    pendingCredits: 0,
+    estimatedValue: 0
+  });
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -94,6 +100,25 @@ const Registro = () => {
     return score;
   };
 
+  const calculateSimulatedData = (score: number, area: number) => {
+    // Cálculo baseado no score e área
+    const baseCreditsPerHectare = 5; // Base de 5 tCO₂e por hectare
+    const scoreMultiplier = (score / 10) * 2; // Multiplicador baseado no score (0-2)
+    
+    const totalCredits = Math.round(area * baseCreditsPerHectare * (1 + scoreMultiplier));
+    const certificatedCredits = Math.round(totalCredits * 0.8); // 80% certificados
+    const pendingCredits = totalCredits - certificatedCredits; // 20% pendentes
+    const pricePerCredit = 150; // R$ 150 por tCO₂e
+    const estimatedValue = totalCredits * pricePerCredit;
+
+    return {
+      totalCredits,
+      certificatedCredits,
+      pendingCredits,
+      estimatedValue
+    };
+  };
+
   const sendEmail = async (values: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
     
@@ -127,6 +152,7 @@ const Registro = () => {
       localStorage.setItem('userData', JSON.stringify({
         ...values,
         score: calculatedScore,
+        simulatedData: simulatedData,
         registrationDate: new Date().toISOString()
       }));
       
@@ -150,7 +176,11 @@ const Registro = () => {
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
     const score = calculateScore(values);
+    const area = parseFloat(values.tamanhoArea) || 10; // Default 10 hectares se não informado
+    const simData = calculateSimulatedData(score, area);
+    
     setCalculatedScore(score);
+    setSimulatedData(simData);
     setShowScore(true);
     
     // Aguardar 3 segundos para mostrar o score antes de enviar
@@ -208,6 +238,20 @@ const Registro = () => {
                  calculatedScore >= 4 ? "Bom início! Há espaço para melhorias." :
                  "Projeto inicial. Recomendamos mais detalhamento."}
               </p>
+            </div>
+
+            <div className="bg-green-50 rounded-lg p-4 space-y-2">
+              <h4 className="font-semibold text-green-900">Simulação de Créditos</h4>
+              <div className="grid grid-cols-2 gap-2 text-sm">
+                <div>
+                  <p className="text-gray-600">Total de Créditos</p>
+                  <p className="font-bold text-green-700">{simulatedData.totalCredits} tCO₂e</p>
+                </div>
+                <div>
+                  <p className="text-gray-600">Valor Estimado</p>
+                  <p className="font-bold text-green-700">R$ {simulatedData.estimatedValue.toLocaleString('pt-BR')}</p>
+                </div>
+              </div>
             </div>
             
             <div className="text-sm text-gray-500">
