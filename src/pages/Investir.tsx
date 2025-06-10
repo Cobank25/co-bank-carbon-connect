@@ -107,16 +107,16 @@ const Investir = () => {
                       <span className="font-semibold">+23,4%</span>
                     </div>
                   </div>
-                  <div className="mb-4">
+                  <div className="flex justify-between mb-4">
+                    <Button variant="outline">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  </div>
+                  <div className="mb-2">
                     <InvestmentChart 
                       data={investmentData.fundos[0].data} 
                       color={investmentData.fundos[0].color}
-                      height={80}
+                      height={100}
                     />
-                  </div>
-                  <div className="flex justify-between mt-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -144,16 +144,16 @@ const Investir = () => {
                       <span className="font-semibold">+18,2%</span>
                     </div>
                   </div>
-                  <div className="mb-4">
+                  <div className="flex justify-between mb-4">
+                    <Button variant="outline">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  </div>
+                  <div className="mb-2">
                     <InvestmentChart 
                       data={investmentData.fundos[1].data} 
                       color={investmentData.fundos[1].color}
-                      height={80}
+                      height={100}
                     />
-                  </div>
-                  <div className="flex justify-between mt-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -181,16 +181,16 @@ const Investir = () => {
                       <span className="font-semibold">+15,8%</span>
                     </div>
                   </div>
-                  <div className="mb-4">
+                  <div className="flex justify-between mb-4">
+                    <Button variant="outline">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  </div>
+                  <div className="mb-2">
                     <InvestmentChart 
                       data={investmentData.fundos[2].data} 
                       color={investmentData.fundos[2].color}
-                      height={80}
+                      height={100}
                     />
-                  </div>
-                  <div className="flex justify-between mt-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -218,16 +218,16 @@ const Investir = () => {
                       <span className="font-semibold">+11,2%</span>
                     </div>
                   </div>
-                  <div className="mb-4">
+                  <div className="flex justify-between mb-4">
+                    <Button variant="outline">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  </div>
+                  <div className="mb-2">
                     <InvestmentChart 
                       data={investmentData.fundos[3].data} 
                       color={investmentData.fundos[3].color}
-                      height={80}
+                      height={100}
                     />
-                  </div>
-                  <div className="flex justify-between mt-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -259,16 +259,16 @@ const Investir = () => {
                       <span className="font-semibold">+28,4%</span>
                     </div>
                   </div>
-                  <div className="mb-4">
+                  <div className="flex justify-between mb-4">
+                    <Button variant="outline">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  </div>
+                  <div className="mb-2">
                     <InvestmentChart 
                       data={investmentData.empresas[0].data} 
                       color={investmentData.empresas[0].color}
-                      height={80}
+                      height={100}
                     />
-                  </div>
-                  <div className="flex justify-between mt-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -296,16 +296,16 @@ const Investir = () => {
                       <span className="font-semibold">+34,5%</span>
                     </div>
                   </div>
-                  <div className="mb-4">
+                  <div className="flex justify-between mb-4">
+                    <Button variant="outline">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  </div>
+                  <div className="mb-2">
                     <InvestmentChart 
                       data={investmentData.empresas[1].data} 
                       color={investmentData.empresas[1].color}
-                      height={80}
+                      height={100}
                     />
-                  </div>
-                  <div className="flex justify-between mt-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -333,16 +333,16 @@ const Investir = () => {
                       <span className="font-semibold">+19,7%</span>
                     </div>
                   </div>
-                  <div className="mb-4">
+                  <div className="flex justify-between mb-4">
+                    <Button variant="outline">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  </div>
+                  <div className="mb-2">
                     <InvestmentChart 
                       data={investmentData.empresas[2].data} 
                       color={investmentData.empresas[2].color}
-                      height={80}
+                      height={100}
                     />
-                  </div>
-                  <div className="flex justify-between mt-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -374,16 +374,16 @@ const Investir = () => {
                       <span className="font-semibold">+20,8%</span>
                     </div>
                   </div>
-                  <div className="mb-4">
+                  <div className="flex justify-between mb-4">
+                    <Button variant="outline">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  </div>
+                  <div className="mb-2">
                     <InvestmentChart 
                       data={investmentData.etfs[0].data} 
                       color={investmentData.etfs[0].color}
-                      height={80}
+                      height={100}
                     />
-                  </div>
-                  <div className="flex justify-between mt-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -411,16 +411,16 @@ const Investir = () => {
                       <span className="font-semibold">+16,2%</span>
                     </div>
                   </div>
-                  <div className="mb-4">
+                  <div className="flex justify-between mb-4">
+                    <Button variant="outline">Detalhes</Button>
+                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
+                  </div>
+                  <div className="mb-2">
                     <InvestmentChart 
                       data={investmentData.etfs[1].data} 
                       color={investmentData.etfs[1].color}
-                      height={80}
+                      height={100}
                     />
-                  </div>
-                  <div className="flex justify-between mt-4">
-                    <Button variant="outline">Detalhes</Button>
-                    <Button className="bg-green-600 hover:bg-green-700">Investir</Button>
                   </div>
                 </CardContent>
               </Card>
