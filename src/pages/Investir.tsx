@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, TrendingUp, TrendingDown, Search } from "lucide-react";
@@ -100,7 +101,7 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 p-4">
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Rendimento 12 meses</p>
                     <div className="flex items-center gap-2">
@@ -111,7 +112,7 @@ const Investir = () => {
                     <Button variant="outline" className="flex-1">Detalhes</Button>
                     <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mt-3">
+                  <div className="w-full">
                     <InvestmentChart 
                       data={investmentData.fundos[0].data} 
                       color={investmentData.fundos[0].color}
@@ -137,7 +138,7 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 p-4">
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Rendimento 12 meses</p>
                     <div className="flex items-center gap-2">
@@ -148,7 +149,7 @@ const Investir = () => {
                     <Button variant="outline" className="flex-1">Detalhes</Button>
                     <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mt-3">
+                  <div className="w-full">
                     <InvestmentChart 
                       data={investmentData.fundos[1].data} 
                       color={investmentData.fundos[1].color}
@@ -174,7 +175,7 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 p-4">
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Rendimento 12 meses</p>
                     <div className="flex items-center gap-2">
@@ -185,7 +186,7 @@ const Investir = () => {
                     <Button variant="outline" className="flex-1">Detalhes</Button>
                     <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mt-3">
+                  <div className="w-full">
                     <InvestmentChart 
                       data={investmentData.fundos[2].data} 
                       color={investmentData.fundos[2].color}
@@ -211,7 +212,7 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 p-4">
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Rendimento 12 meses</p>
                     <div className="flex items-center gap-2">
@@ -222,7 +223,7 @@ const Investir = () => {
                     <Button variant="outline" className="flex-1">Detalhes</Button>
                     <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mt-3">
+                  <div className="w-full">
                     <InvestmentChart 
                       data={investmentData.fundos[3].data} 
                       color={investmentData.fundos[3].color}
@@ -252,7 +253,7 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 p-4">
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Variação 12 meses</p>
                     <div className="flex items-center gap-2">
@@ -263,7 +264,7 @@ const Investir = () => {
                     <Button variant="outline" className="flex-1">Detalhes</Button>
                     <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mt-3">
+                  <div className="w-full">
                     <InvestmentChart 
                       data={investmentData.empresas[0].data} 
                       color={investmentData.empresas[0].color}
@@ -289,7 +290,7 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 p-4">
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Variação 12 meses</p>
                     <div className="flex items-center gap-2">
@@ -300,7 +301,7 @@ const Investir = () => {
                     <Button variant="outline" className="flex-1">Detalhes</Button>
                     <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mt-3">
+                  <div className="w-full">
                     <InvestmentChart 
                       data={investmentData.empresas[1].data} 
                       color={investmentData.empresas[1].color}
@@ -326,7 +327,7 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 p-4">
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Variação 12 meses</p>
                     <div className="flex items-center gap-2">
@@ -337,7 +338,7 @@ const Investir = () => {
                     <Button variant="outline" className="flex-1">Detalhes</Button>
                     <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mt-3">
+                  <div className="w-full">
                     <InvestmentChart 
                       data={investmentData.empresas[2].data} 
                       color={investmentData.empresas[2].color}
@@ -367,7 +368,7 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 p-4">
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Variação 12 meses</p>
                     <div className="flex items-center gap-2">
@@ -378,7 +379,7 @@ const Investir = () => {
                     <Button variant="outline" className="flex-1">Detalhes</Button>
                     <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mt-3">
+                  <div className="w-full">
                     <InvestmentChart 
                       data={investmentData.etfs[0].data} 
                       color={investmentData.etfs[0].color}
@@ -404,7 +405,7 @@ const Investir = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 p-4">
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Variação 12 meses</p>
                     <div className="flex items-center gap-2">
@@ -415,7 +416,7 @@ const Investir = () => {
                     <Button variant="outline" className="flex-1">Detalhes</Button>
                     <Button className="bg-green-600 hover:bg-green-700 flex-1">Investir</Button>
                   </div>
-                  <div className="mt-3">
+                  <div className="w-full">
                     <InvestmentChart 
                       data={investmentData.etfs[1].data} 
                       color={investmentData.etfs[1].color}
@@ -472,5 +473,3 @@ const Investir = () => {
 };
 
 export default Investir;
-
-</edits_to_apply>
