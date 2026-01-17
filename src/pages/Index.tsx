@@ -177,7 +177,7 @@ const Index = () => {
               <h3 className="font-semibold text-gray-800 mb-4">Contato</h3>
               <ul className="space-y-2">
                 <li className="text-gray-600">contato@cobank.com.br</li>
-                <li className="text-gray-600">+55 (11) 9999-8888</li>
+                <li className="text-gray-600">+55 31 993830596</li>
               </ul>
             </div>
           </div>
