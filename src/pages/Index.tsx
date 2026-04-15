@@ -38,7 +38,7 @@ const Index = () => {
             <span className="italic text-[#A39E93]">como ativo financeiro.</span>
           </h1>
           <p className="mt-8 text-[16px] text-[#F2F0E9]/60 leading-[1.8] max-w-[52ch] mx-auto">
-            A CoBank estrutura, certifica e conecta projetos de geração de créditos 
+            A CoBank estrutura, financia e conecta projetos de geração de créditos 
             de carbono ao mercado global. Transformamos ativos ambientais em ativos 
             financeiros rastreáveis, auditáveis e comercializáveis.
           </p>
