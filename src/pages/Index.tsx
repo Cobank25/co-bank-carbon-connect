@@ -37,8 +37,13 @@ const Index = () => {
             <br />
             <span className="italic text-[#A39E93]">como ativo financeiro.</span>
           </h1>
-          <p className="mt-8 text-[16px] text-[#F2F0E9]/60 leading-[1.8] max-w-[48ch] mx-auto">
-            Estruturamos, financiamos e conectamos projetos de créditos de carbono ao mercado global.
+          <p className="mt-8 text-[16px] text-[#F2F0E9]/60 leading-[1.8] max-w-[52ch] mx-auto">
+            A CoBank estrutura, financia e conecta projetos de geração de créditos 
+            de carbono ao mercado global. Transformamos ativos ambientais em ativos 
+            financeiros rastreáveis, auditáveis e comercializáveis.
+          </p>
+          <p className="mt-3 text-[15px] text-[#F2F0E9]/35 leading-[1.7] italic font-[Playfair_Display]">
+            A ponte entre oferta descentralizada de impacto e demanda global por sustentabilidade.
           </p>
         </div>
       </header>
@@ -49,8 +54,12 @@ const Index = () => {
           <div className="max-w-xl mb-16">
             <span className="text-[10px] font-semibold text-[#A39E93] uppercase tracking-[0.4em]">O ciclo completo</span>
             <h2 className="font-[Playfair_Display] text-[2.25rem] font-normal tracking-tight text-[#121417] mt-3 leading-tight">
-              Como funciona
+              Como a CoBank funciona
             </h2>
+            <p className="text-[15px] text-[#121417]/40 mt-4 leading-relaxed">
+              Organizamos todo o ciclo de geração de créditos de carbono — da coleta de dados 
+              à conexão com compradores no mercado voluntário.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -59,19 +68,19 @@ const Index = () => {
                 step: "01",
                 icon: BarChart3,
                 title: "Coleta e estruturação",
-                desc: "Dados de geração coletados e analisados para viabilidade."
+                desc: "Coletamos e estruturamos os dados de geração de energia dos ativos sustentáveis, analisando a viabilidade de cada projeto."
               },
               {
                 step: "02",
                 icon: Layers,
-                title: "Certificação e consórcio",
-                desc: "Ativos agrupados e certificados por padrões internacionais."
+                title: "Consolidação e certificação",
+                desc: "Consolidamos múltiplos ativos em projetos agrupados e conduzimos a certificação através de padrões reconhecidos internacionalmente."
               },
               {
                 step: "03",
                 icon: Globe,
-                title: "Registro e venda",
-                desc: "Créditos registrados e conectados a compradores globais."
+                title: "Registro e comercialização",
+                desc: "Os créditos são registrados em sistemas rastreáveis e conectados a compradores no mercado voluntário global."
               }
             ].map((item) => (
               <div key={item.step} className="group relative bg-[#F2F0E9] border border-[#D4D1C9]/50 rounded-2xl p-8 hover:border-[#A39E93]/50 hover:shadow-lg transition-all duration-300">
@@ -96,22 +105,24 @@ const Index = () => {
                 <div className="size-8 rounded-lg bg-[#121417]/[0.04] flex items-center justify-center">
                   <Sun className="h-4 w-4 text-[#121417]/50" />
                 </div>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-[#A39E93]">Geradores de créditos</span>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-[#A39E93]">Produtores de créditos</span>
               </div>
               <h2 className="font-[Playfair_Display] text-[2.25rem] font-normal tracking-tight text-[#121417] leading-tight mb-5">
-                Donos de ativos renováveis
+                Proprietários de ativos sustentáveis
               </h2>
-              <p className="text-[15px] text-[#121417]/40 leading-[1.7] mb-8">
-                Transformamos sua geração em créditos de carbono certificados e os conectamos ao mercado — sem investimento inicial.
+              <p className="text-[15px] text-[#121417]/40 leading-[1.7] mb-10">
+                Se você possui uma usina solar ou outro ativo de geração renovável, 
+                a CoBank transforma sua geração em créditos de carbono certificados 
+                e os conecta ao mercado — sem investimento inicial da sua parte.
               </p>
-              <div className="space-y-5">
+              <div className="space-y-6">
                 <div className="flex gap-4">
                   <div className="size-10 shrink-0 rounded-lg bg-[#121417]/[0.04] flex items-center justify-center">
                     <Leaf className="h-4 w-4 text-[#121417]/50" />
                   </div>
                   <div>
-                    <p className="text-[15px] font-medium text-[#121417]">Receita extra, custo zero</p>
-                    <p className="text-sm text-[#121417]/35 mt-1">Monetize a energia que você já gera.</p>
+                    <p className="text-[15px] font-medium text-[#121417]">Receita adicional sem investimento</p>
+                    <p className="text-sm text-[#121417]/35 mt-1">Monetize a energia que você já gera, sem custo adicional.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -120,21 +131,21 @@ const Index = () => {
                   </div>
                   <div>
                     <p className="text-[15px] font-medium text-[#121417]">Modelo de consórcio</p>
-                    <p className="text-sm text-[#121417]/35 mt-1">Custos diluídos. Escala desde o primeiro dia.</p>
+                    <p className="text-sm text-[#121417]/35 mt-1">Custos de certificação diluídos. Você entra no mercado com escala.</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="bg-white border border-[#D4D1C9]/50 rounded-2xl p-8 shadow-[0_4px_24px_-8px_rgba(18,20,23,0.04)]">
-              <span className="text-[10px] font-semibold text-[#A39E93] uppercase tracking-[0.4em]">Vantagens</span>
+              <span className="text-[10px] font-semibold text-[#A39E93] uppercase tracking-[0.4em]">Por que registrar na CoBank</span>
               <ul className="mt-6 space-y-5">
                 {[
-                  "Sem investimento inicial",
-                  "Certificação compartilhada entre geradores",
-                  "Acesso a mercados internacionais",
-                  "Painel de acompanhamento de créditos e receita",
-                  "Rastreabilidade do ativo ao comprador"
+                  "Sem investimento inicial — a CoBank estrutura tudo",
+                  "Custos de certificação compartilhados entre múltiplos geradores",
+                  "Acesso a mercados internacionais através de padrões reconhecidos",
+                  "Acompanhe créditos emitidos, vendas e rendimento pela plataforma",
+                  "Rastreabilidade completa do seu ativo até o comprador final"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3.5">
                     <div className="size-6 shrink-0 rounded-md bg-[#121417]/[0.04] flex items-center justify-center mt-0.5">
@@ -159,14 +170,14 @@ const Index = () => {
         <div className="mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-20 items-start">
             <div className="order-2 lg:order-1 bg-white border border-[#D4D1C9]/50 rounded-2xl p-8 shadow-[0_4px_24px_-8px_rgba(18,20,23,0.04)]">
-              <span className="text-[10px] font-semibold text-[#A39E93] uppercase tracking-[0.4em]">Vantagens</span>
+              <span className="text-[10px] font-semibold text-[#A39E93] uppercase tracking-[0.4em]">Por que comprar na CoBank</span>
               <ul className="mt-6 space-y-5">
                 {[
-                  "Créditos certificados internacionalmente",
-                  "Rastreabilidade completa por projeto",
-                  "Projetos consolidados com escala",
-                  "Relatórios de impacto para ESG",
-                  "Sem intermediários desnecessários"
+                  "Créditos certificados por padrões internacionais reconhecidos",
+                  "Rastreabilidade completa — saiba de qual projeto veio cada crédito",
+                  "Projetos consolidados com estrutura e escala",
+                  "Relatórios de impacto para auditorias e comunicação ESG",
+                  "Acesso direto, sem intermediários desnecessários"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3.5">
                     <div className="size-6 shrink-0 rounded-md bg-[#121417]/[0.04] flex items-center justify-center mt-0.5">
@@ -183,22 +194,24 @@ const Index = () => {
                 <div className="size-8 rounded-lg bg-[#121417]/[0.04] flex items-center justify-center">
                   <TrendingUp className="h-4 w-4 text-[#121417]/50" />
                 </div>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-[#A39E93]">Compradores</span>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.4em] text-[#A39E93]">Compradores de créditos</span>
               </div>
               <h2 className="font-[Playfair_Display] text-[2.25rem] font-normal tracking-tight text-[#121417] leading-tight mb-5">
                 Empresas e investidores
               </h2>
-              <p className="text-[15px] text-[#121417]/40 leading-[1.7] mb-8">
-                Compense emissões ou diversifique investimentos com créditos certificados, rastreáveis e estruturados.
+              <p className="text-[15px] text-[#121417]/40 leading-[1.7] mb-10">
+                Se sua empresa precisa compensar emissões para cumprir metas ESG, 
+                ou se você busca diversificar investimentos em ativos ambientais, 
+                a CoBank oferece acesso a créditos certificados com total transparência e rastreabilidade.
               </p>
-              <div className="space-y-5">
+              <div className="space-y-6">
                 <div className="flex gap-4">
                   <div className="size-10 shrink-0 rounded-lg bg-[#121417]/[0.04] flex items-center justify-center">
                     <Building2 className="h-4 w-4 text-[#121417]/50" />
                   </div>
                   <div>
                     <p className="text-[15px] font-medium text-[#121417]">Compliance ambiental</p>
-                    <p className="text-sm text-[#121417]/35 mt-1">Créditos auditáveis para metas ESG.</p>
+                    <p className="text-sm text-[#121417]/35 mt-1">Compense emissões com créditos auditáveis e estruturados.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -207,7 +220,7 @@ const Index = () => {
                   </div>
                   <div>
                     <p className="text-[15px] font-medium text-[#121417]">Transparência total</p>
-                    <p className="text-sm text-[#121417]/35 mt-1">Cada crédito rastreável até a origem.</p>
+                    <p className="text-sm text-[#121417]/35 mt-1">Cada crédito é rastreável até o projeto de origem.</p>
                   </div>
                 </div>
               </div>
