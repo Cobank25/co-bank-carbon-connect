@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,7 +7,12 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 155 30% 5%;
+
+    --cobalt: 155 30% 5%;
+    --electric: 145 100% 45%;
+    --muted-green: 162 87% 16%;
+    --grid-color: 214 32% 91%;
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
