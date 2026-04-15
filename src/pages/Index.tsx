@@ -38,7 +38,7 @@ const Index = () => {
                 <span className="text-[#3A5A32] font-medium">da energia solar.</span>
               </h1>
               <p className="mt-6 text-[17px] text-[#1C2B1C]/50 leading-[1.7] max-w-[48ch]">
-                A CoBank conecta proprietários de usinas solares a empresas e investidores 
+                A CoBank conecta geradores de créditos a empresas e investidores 
                 que buscam compensar emissões ou investir em ativos ambientais.
               </p>
               <p className="mt-3 text-[17px] text-[#1C2B1C]/50 leading-[1.7] max-w-[48ch]">
@@ -236,7 +236,7 @@ const Index = () => {
                 <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-[#5B7A3D]">Para geradores</span>
               </div>
               <h2 className="text-[2rem] font-normal tracking-tight text-[#1C2B1C] leading-tight mb-5">
-                Proprietários de usinas solares
+                Geradores de Créditos
               </h2>
               <p className="text-[15px] text-[#1C2B1C]/45 leading-[1.7] mb-10">
                 Se você tem uma usina solar e gera energia limpa, a CoBank transforma 
