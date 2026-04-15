@@ -21,71 +21,30 @@ const Index = () => {
       </nav>
 
       {/* Hero */}
-      <header className="relative px-6 pt-20 pb-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#4A6741]/[0.04] via-transparent to-transparent pointer-events-none"></div>
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#4A6741]/[0.03] rounded-full blur-[100px] pointer-events-none"></div>
+      <header className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/hero-jungle.png')" }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1C2B1C]/80 via-[#1C2B1C]/40 to-[#1C2B1C]/20"></div>
         
-        <div className="relative mx-auto max-w-6xl">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 mb-8 px-3 py-1.5 rounded-full bg-[#4A6741]/[0.08] border border-[#4A6741]/10">
-                <span className="size-2 rounded-full bg-[#5B7A3D]"></span>
-                <span className="text-[11px] font-medium text-[#3A5A32] tracking-wide">Mercado ativo</span>
-              </div>
-              <h1 className="text-[2.75rem] sm:text-5xl font-normal tracking-tight text-[#1C2B1C] leading-[1.15]">
-                Créditos de carbono
-                <br />
-                <span className="text-[#3A5A32] font-medium">da energia solar.</span>
-              </h1>
-              <p className="mt-6 text-[17px] text-[#1C2B1C]/50 leading-[1.7] max-w-[48ch]">
-                A CoBank conecta geradores de créditos a empresas e investidores 
-                que buscam compensar emissões ou investir em ativos ambientais.
-              </p>
-              <p className="mt-3 text-[17px] text-[#1C2B1C]/50 leading-[1.7] max-w-[48ch]">
-                Direto de quem gera. Sem intermediários.
-              </p>
-            </div>
-
-            {/* Visual element — key metrics */}
-            <div className="relative">
-              <div className="bg-white border border-[#D4D1C9] rounded-2xl p-8 shadow-[0_8px_40px_-12px_rgba(28,43,28,0.08)]">
-                <div className="flex items-center justify-between mb-8">
-                  <span className="text-xs font-medium text-[#1C2B1C]/35 uppercase tracking-widest">Visão geral</span>
-                  <span className="size-2 rounded-full bg-[#5B7A3D]"></span>
-                </div>
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="bg-[#F2F1EE] rounded-xl p-5">
-                    <div className="size-10 rounded-lg bg-[#4A6741]/10 flex items-center justify-center mb-4">
-                      <Sun className="h-5 w-5 text-[#3A5A32]" />
-                    </div>
-                    <div className="text-2xl font-semibold text-[#1C2B1C] font-[IBM_Plex_Mono]">1.284</div>
-                    <div className="text-xs text-[#1C2B1C]/35 mt-1">Usinas conectadas</div>
-                  </div>
-                  <div className="bg-[#F2F1EE] rounded-xl p-5">
-                    <div className="size-10 rounded-lg bg-[#4A6741]/10 flex items-center justify-center mb-4">
-                      <TrendingUp className="h-5 w-5 text-[#3A5A32]" />
-                    </div>
-                    <div className="text-2xl font-semibold text-[#1C2B1C] font-[IBM_Plex_Mono]">12.8K</div>
-                    <div className="text-xs text-[#1C2B1C]/35 mt-1">Créditos emitidos (tCO2e)</div>
-                  </div>
-                  <div className="bg-[#F2F1EE] rounded-xl p-5">
-                    <div className="size-10 rounded-lg bg-[#4A6741]/10 flex items-center justify-center mb-4">
-                      <BarChart3 className="h-5 w-5 text-[#3A5A32]" />
-                    </div>
-                    <div className="text-2xl font-semibold text-[#3A5A32] font-[IBM_Plex_Mono]">R$ 78</div>
-                    <div className="text-xs text-[#1C2B1C]/35 mt-1">Preço médio (tCO2e)</div>
-                  </div>
-                  <div className="bg-[#F2F1EE] rounded-xl p-5">
-                    <div className="size-10 rounded-lg bg-[#4A6741]/10 flex items-center justify-center mb-4">
-                      <Shield className="h-5 w-5 text-[#3A5A32]" />
-                    </div>
-                    <div className="text-2xl font-semibold text-[#1C2B1C] font-[IBM_Plex_Mono]">98.4%</div>
-                    <div className="text-xs text-[#1C2B1C]/35 mt-1">Taxa de verificação</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="relative z-10 mx-auto max-w-3xl text-center px-6">
+          <div className="inline-flex items-center gap-2 mb-8 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-sm">
+            <span className="size-2 rounded-full bg-[#8BA87A]"></span>
+            <span className="text-[11px] font-medium text-white/80 tracking-wide">Mercado ativo</span>
           </div>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-[1.1]">
+            Créditos de carbono
+            <br />
+            <span className="text-[#B5D6A7] font-medium">da energia solar.</span>
+          </h1>
+          <p className="mt-6 text-[17px] text-white/70 leading-[1.7] max-w-[52ch] mx-auto">
+            A CoBank conecta geradores de créditos a empresas e investidores 
+            que buscam compensar emissões ou investir em ativos ambientais.
+          </p>
+          <p className="mt-3 text-[17px] text-white/50 leading-[1.7]">
+            Direto de quem gera. Sem intermediários.
+          </p>
         </div>
       </header>
 
