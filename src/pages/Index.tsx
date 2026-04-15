@@ -13,9 +13,10 @@ const Index = () => {
           </div>
           <div className="hidden md:flex items-center gap-8 text-[13px] font-medium text-[#121417]/40 tracking-wide">
             <a href="#como-funciona" className="hover:text-[#121417] transition-colors">Como funciona</a>
+            <a href="#diferencial" className="hover:text-[#121417] transition-colors">Diferencial</a>
             <a href="#produtores" className="hover:text-[#121417] transition-colors">Produtores</a>
             <a href="#compradores" className="hover:text-[#121417] transition-colors">Compradores</a>
-            <span className="font-[Playfair_Display] italic text-[#A39E93] text-sm tracking-normal">Escala através da agregação inteligente</span>
+            <a href="#contato" className="hover:text-[#121417] transition-colors">Contato</a>
           </div>
         </div>
       </nav>
