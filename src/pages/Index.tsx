@@ -237,7 +237,7 @@ const Index = () => {
             <br />
             <span className="text-[#A39E93]">agregação inteligente."</span>
           </blockquote>
-          <span className="inline-block mt-6 text-[11px] text-[#A39E93]/50 tracking-[0.3em] uppercase">— CoBank</span>
+          
         </div>
       </section>
 
