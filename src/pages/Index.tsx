@@ -229,23 +229,15 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 px-6 bg-[#121417]">
-        <div className="mx-auto max-w-2xl text-center">
-          <div className="size-14 rounded-2xl bg-[#A39E93]/10 flex items-center justify-center mx-auto mb-8">
-            <Leaf className="h-6 w-6 text-[#A39E93]" />
-          </div>
-          <h2 className="font-[Playfair_Display] text-3xl md:text-4xl font-normal tracking-tight text-[#F2F0E9] mb-4 leading-tight">
-            Escala através da
+      {/* Slogan */}
+      <section className="py-28 px-6 bg-[#121417]">
+        <div className="mx-auto max-w-3xl text-center">
+          <blockquote className="font-[Cormorant_Garamond] text-3xl md:text-5xl font-light italic tracking-tight text-[#F2F0E9]/80 leading-[1.3]">
+            "Escala através da
             <br />
-            <span className="italic text-[#A39E93]">agregação inteligente.</span>
-          </h2>
-          <a 
-            href="mailto:contato@cobank.com.br" 
-            className="inline-flex items-center gap-2.5 bg-[#F2F0E9] text-[#121417] px-8 py-3.5 rounded-xl text-sm font-semibold hover:bg-white transition-colors mt-8"
-          >
-            Fale conosco <ArrowRight className="h-4 w-4" />
-          </a>
+            <span className="text-[#A39E93]">agregação inteligente."</span>
+          </blockquote>
+          <span className="inline-block mt-6 text-[11px] text-[#A39E93]/50 tracking-[0.3em] uppercase">— CoBank</span>
         </div>
       </section>
 
