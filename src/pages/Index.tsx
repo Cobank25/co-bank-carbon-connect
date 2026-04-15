@@ -235,42 +235,43 @@ const Index = () => {
           <div className="size-14 rounded-2xl bg-[#A39E93]/10 flex items-center justify-center mx-auto mb-8">
             <Leaf className="h-6 w-6 text-[#A39E93]" />
           </div>
-          <h2 className="font-[Playfair_Display] text-3xl font-normal tracking-tight text-[#F2F0E9] mb-4 leading-tight">
-            Quer saber mais?
+          <h2 className="font-[Playfair_Display] text-3xl md:text-4xl font-normal tracking-tight text-[#F2F0E9] mb-4 leading-tight">
+            Escala através da
+            <br />
+            <span className="italic text-[#A39E93]">agregação inteligente.</span>
           </h2>
-          <p className="text-[15px] text-[#F2F0E9]/35 mb-10 leading-relaxed max-w-lg mx-auto">
-            A CoBank é a infraestrutura que conecta oferta descentralizada de impacto 
-            ambiental à demanda global por ativos sustentáveis confiáveis. 
-            Entre em contato para entender como podemos ajudar.
-          </p>
           <a 
             href="mailto:contato@cobank.com.br" 
-            className="inline-flex items-center gap-2.5 bg-[#F2F0E9] text-[#121417] px-8 py-3.5 rounded-xl text-sm font-semibold hover:bg-white transition-colors"
+            className="inline-flex items-center gap-2.5 bg-[#F2F0E9] text-[#121417] px-8 py-3.5 rounded-xl text-sm font-semibold hover:bg-white transition-colors mt-8"
           >
             Fale conosco <ArrowRight className="h-4 w-4" />
           </a>
         </div>
       </section>
 
-      {/* Slogan */}
-      <section className="py-20 px-6 bg-[#F2F0E9] border-t border-[#D4D1C9]/50">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-[Playfair_Display] text-3xl md:text-4xl font-normal tracking-tight text-[#121417] leading-tight">
-            Escala através da
-            <br />
-            <span className="italic text-[#A39E93]">agregação inteligente.</span>
-          </h2>
-        </div>
-        <div className="mx-auto max-w-6xl mt-12 pt-6 border-t border-[#D4D1C9]/50 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-2">
-            <img src="/lovable-uploads/b6213c32-ed1d-45af-94c8-396fc645d88e.png" alt="CoBank Logo" className="h-6 w-6" />
-            <span className="font-[Playfair_Display] text-sm font-medium text-[#121417]">CoBank</span>
+      {/* Footer */}
+      <footer className="bg-[#F2F0E9] border-t border-[#D4D1C9]/50 py-12 px-6">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col md:flex-row justify-between gap-8">
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <img src="/lovable-uploads/b6213c32-ed1d-45af-94c8-396fc645d88e.png" alt="CoBank Logo" className="h-6 w-6" />
+                <span className="font-[Playfair_Display] text-sm font-medium text-[#121417]">CoBank</span>
+              </div>
+              <p className="text-[13px] text-[#121417]/25 max-w-xs leading-relaxed">
+                Estruturamos, certificamos e conectamos projetos de créditos de carbono ao mercado global.
+              </p>
+            </div>
+            <div className="text-[13px] text-[#121417]/25">
+              <p>contato@cobank.com.br</p>
+              <p className="mt-1">+55 31 993830596</p>
+            </div>
           </div>
-          <div className="text-[11px] text-[#121417]/15">
+          <div className="mt-10 pt-6 border-t border-[#D4D1C9]/50 text-[11px] text-[#121417]/15">
             &copy; {new Date().getFullYear()} CoBank. Todos os direitos reservados.
           </div>
         </div>
-      </section>
+      </footer>
     </div>
   );
 };
