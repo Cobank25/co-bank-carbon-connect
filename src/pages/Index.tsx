@@ -255,7 +255,7 @@ const Index = () => {
               </p>
             </div>
             <div className="text-[13px] text-[#121417]/25">
-              <p>contato@cobank.com.br</p>
+              <p>contato@cobankbrasil.com.br</p>
               <p className="mt-1">+55 31 993830596</p>
             </div>
           </div>
