@@ -172,7 +172,7 @@ const Index = () => {
               <span className="text-[10px] font-semibold text-[#A39E93] uppercase tracking-[0.4em]">Por que comprar na CoBank</span>
               <ul className="mt-6 space-y-5">
                 {[
-                  "Créditos certificados por padrões internacionais reconhecidos",
+                  "Créditos certificados por padrões reconhecidos",
                   "Rastreabilidade completa — saiba de qual projeto veio cada crédito",
                   "Projetos consolidados com estrutura e escala",
                   "Relatórios de impacto para auditorias e comunicação ESG",
