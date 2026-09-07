@@ -39,8 +39,7 @@ const Index = () => {
           </h1>
           <p className="mt-8 text-[16px] text-[#F2F0E9]/60 leading-[1.8] max-w-[52ch] mx-auto">
             A CoBank estrutura, financia e conecta projetos de geração de créditos 
-            de carbono ao mercado global. Transformamos ativos ambientais em ativos 
-            financeiros rastreáveis, auditáveis e comercializáveis.
+            de carbono ao mercado global.
           </p>
           <p className="mt-3 text-[15px] text-[#F2F0E9]/35 leading-[1.7] italic font-[Playfair_Display]">
             A ponte entre oferta descentralizada de impacto e demanda global por sustentabilidade.
@@ -251,7 +250,7 @@ const Index = () => {
                 <span className="font-[Playfair_Display] text-sm font-medium text-[#121417]">CoBank</span>
               </div>
               <p className="text-[13px] text-[#121417]/25 max-w-xs leading-relaxed">
-                Estruturamos, certificamos e conectamos projetos de créditos de carbono ao mercado global.
+                Transformamos ativos ambientais em ativos financeiros rastreáveis, auditáveis e comercializáveis.
               </p>
             </div>
             <div className="text-[13px] text-[#121417]/25">
