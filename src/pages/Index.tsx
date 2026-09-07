@@ -175,7 +175,7 @@ const Index = () => {
                   "Créditos certificados por padrões reconhecidos",
                   "Operação 100% nacional",
                   "Projetos consolidados com estrutura e escala",
-                  "Relatórios de impacto para auditorias e comunicação ESG",
+                  "Acesso simplificado as tendências ESG",
                   "Acesso direto, sem intermediários"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3.5">
