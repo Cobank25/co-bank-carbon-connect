@@ -252,7 +252,7 @@ const Index = () => {
               </p>
             </div>
             <div className="text-[13px] text-[#121417]/25">
-              <p>contato@cobankcarbon.com</p>
+              <p>contato@cobankcarbon.com.br</p>
             </div>
           </div>
           <div className="mt-10 pt-6 border-t border-[#D4D1C9]/50 text-[11px] text-[#121417]/15">
