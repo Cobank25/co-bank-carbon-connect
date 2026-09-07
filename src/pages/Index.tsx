@@ -176,7 +176,7 @@ const Index = () => {
                   "Operação 100% nacional",
                   "Projetos consolidados com estrutura e escala",
                   "Relatórios de impacto para auditorias e comunicação ESG",
-                  "Acesso direto, sem intermediários desnecessários"
+                  "Acesso direto, sem intermediários"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3.5">
                     <div className="size-6 shrink-0 rounded-md bg-[#121417]/[0.04] flex items-center justify-center mt-0.5">
