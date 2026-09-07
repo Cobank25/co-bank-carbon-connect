@@ -250,7 +250,7 @@ const Index = () => {
                 <span className="font-[Playfair_Display] text-sm font-medium text-[#121417]">CoBank</span>
               </div>
               <p className="text-[13px] text-[#121417]/25 max-w-xs leading-relaxed">
-                Estruturamos, certificamos e conectamos projetos de créditos de carbono ao mercado global.
+                Transformamos ativos ambientais em ativos financeiros rastreáveis, auditáveis e comercializáveis.
               </p>
             </div>
             <div className="text-[13px] text-[#121417]/25">
