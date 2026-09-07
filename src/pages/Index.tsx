@@ -199,7 +199,7 @@ const Index = () => {
                 Empresas e investidores
               </h2>
               <p className="text-[15px] text-[#121417]/40 leading-[1.7] mb-10">
-                A CoBank oferece praticidade e acessibilidade a negócios que buscam o ingresso ao mercado de carbono, mantendo o compromisso com a agenda ESG e atualidades.
+                A CoBank oferece praticidade e acessibilidade a negócios que buscam o ingresso ao mercado de carbono, mantendo o compromisso com a agenda ESG e atualidades, ofertando
               </p>
               <div className="space-y-6">
                 <div className="flex gap-4">
