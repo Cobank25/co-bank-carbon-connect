@@ -173,7 +173,7 @@ const Index = () => {
               <ul className="mt-6 space-y-5">
                 {[
                   "Créditos certificados por padrões reconhecidos",
-                  "Rastreabilidade completa — saiba de qual projeto veio cada crédito",
+                  "Operação 100% nacional",
                   "Projetos consolidados com estrutura e escala",
                   "Relatórios de impacto para auditorias e comunicação ESG",
                   "Acesso direto, sem intermediários desnecessários"
