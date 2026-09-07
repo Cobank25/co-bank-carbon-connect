@@ -199,9 +199,7 @@ const Index = () => {
                 Empresas e investidores
               </h2>
               <p className="text-[15px] text-[#121417]/40 leading-[1.7] mb-10">
-                Se sua empresa precisa compensar emissões para cumprir metas ESG, 
-                ou se você busca diversificar investimentos em ativos ambientais, 
-                a CoBank oferece acesso a créditos certificados com total transparência e rastreabilidade.
+                A CoBank oferece praticidade e acessibilidade a negócios que buscam o ingresso ao mercado de carbono, mantendo o compromisso com a agenda ESG e atualidades.
               </p>
               <div className="space-y-6">
                 <div className="flex gap-4">
