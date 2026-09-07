@@ -174,7 +174,7 @@ const Index = () => {
                 {[
                   "Créditos certificados por padrões reconhecidos",
                   "Operação 100% nacional",
-                  "Projetos consolidados com estrutura e escala",
+                  "Acesso simplificado as tendências ESG",
                   "Relatórios de impacto para auditorias e comunicação ESG",
                   "Acesso direto, sem intermediários"
                 ].map((item, i) => (
