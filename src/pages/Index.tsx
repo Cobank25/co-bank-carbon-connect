@@ -225,6 +225,18 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Slogan */}
+      <section className="py-28 px-6 bg-[#121417]">
+        <div className="mx-auto max-w-3xl text-center">
+          <blockquote className="font-[Cormorant_Garamond] text-3xl md:text-5xl font-light italic tracking-tight text-[#F2F0E9]/80 leading-[1.3]">
+            "Escala através da
+            <br />
+            <span className="text-[#A39E93]">agregação inteligente."</span>
+          </blockquote>
+          
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-[#F2F0E9] border-t border-[#D4D1C9]/50 py-12 px-6">
         <div className="mx-auto max-w-6xl">
