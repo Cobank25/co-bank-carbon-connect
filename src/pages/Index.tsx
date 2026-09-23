@@ -110,7 +110,7 @@ const Index = () => {
               <p className="text-[15px] text-[#121417]/40 leading-[1.7] mb-10">
                 Se você possui uma usina solar ou outro ativo de geração renovável, 
                 a CoBank transforma sua geração em créditos de carbono certificados 
-                e os conecta ao mercado — sem investimento inicial da sua parte.
+                e os conecta ao mercado, oferecendo
               </p>
               <div className="space-y-6">
                 <div className="flex gap-4">
