@@ -138,7 +138,7 @@ const Index = () => {
               <span className="text-[10px] font-semibold text-[#A39E93] uppercase tracking-[0.4em]">Por que registrar na CoBank</span>
               <ul className="mt-6 space-y-5">
                 {[
-                  "Sem investimento inicial — a CoBank estrutura tudo",
+                  "Sem investimento inicial, a CoBank estrutura tudo",
                   "Custos de certificação compartilhados entre múltiplos geradores",
                   "Acesso a mercados internacionais através de padrões reconhecidos",
                   "Acompanhe créditos emitidos, vendas e rendimento pela plataforma",
