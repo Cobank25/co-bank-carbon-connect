@@ -140,7 +140,7 @@ const Index = () => {
                 {[
                   "Sem investimento inicial, a CoBank estrutura tudo",
                   "Custos de certificação compartilhados entre múltiplos geradores",
-                  "Acesso a mercados internacionais através de padrões reconhecidos",
+                  "Acesso facilitado ao mercado de carbono",
                   "Não há burocracia, a CoBank absorve e entrega",
                   "Rastreabilidade completa do seu ativo até o comprador final"
                 ].map((item, i) => (
