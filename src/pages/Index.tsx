@@ -29,7 +29,6 @@ const Index = () => {
         
         <div className="relative z-10 mx-auto max-w-3xl text-center px-6">
           <div className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-[#A39E93]/30 backdrop-blur-sm">
-            <span className="size-2 rounded-full bg-[#A39E93]"></span>
             <span className="text-[10px] font-medium text-[#A39E93] tracking-[0.4em] uppercase">Infraestrutura de carbono</span>
           </div>
           <h1 className="font-[Playfair_Display] text-5xl sm:text-6xl md:text-7xl font-normal tracking-tight text-[#F2F0E9] leading-[1.05]">
