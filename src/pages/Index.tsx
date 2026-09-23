@@ -56,8 +56,7 @@ const Index = () => {
               Como a CoBank funciona
             </h2>
             <p className="text-[15px] text-[#121417]/40 mt-4 leading-relaxed">
-              Viabilizamos todo o ciclo dos créditos de carbono — da coleta de dados 
-              à conexão com compradores no mercado voluntário.
+              Viabilizamos todo o ciclo dos créditos de carbono.
             </p>
           </div>
 
