@@ -71,7 +71,7 @@ const Index = () => {
                 step: "02",
                 icon: Layers,
                 title: "Consolidação e certificação",
-                desc: "Consolidamos múltiplos ativos em projetos agrupados e conduzimos a certificação através de padrões reconhecidos internacionalmente."
+                desc: "Consolidamos múltiplos ativos e conduzimos a certificação através de padrões reconhecidos internacionalmente."
               },
               {
                 step: "03",
