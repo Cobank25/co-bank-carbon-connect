@@ -141,7 +141,7 @@ const Index = () => {
                   "Sem investimento inicial, a CoBank estrutura tudo",
                   "Custos de certificação compartilhados entre múltiplos geradores",
                   "Acesso a mercados internacionais através de padrões reconhecidos",
-                  "Não há burocracia, a CoBank absorve e entrega, end to end",
+                  "Não há burocracia, a CoBank absorve e entrega",
                   "Rastreabilidade completa do seu ativo até o comprador final"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3.5">
