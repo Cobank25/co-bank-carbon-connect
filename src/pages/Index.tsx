@@ -78,7 +78,7 @@ const Index = () => {
                 step: "03",
                 icon: Globe,
                 title: "Registro e comercialização",
-                desc: "Os créditos são registrados em sistemas rastreáveis e conectados a compradores no mercado voluntário global."
+                desc: "Os créditos são registrados em sistemas rastreáveis e conectados a compradores no mercado."
               }
             ].map((item) => (
               <div key={item.step} className="group relative bg-[#F2F0E9] border border-[#D4D1C9]/50 rounded-2xl p-8 hover:border-[#A39E93]/50 hover:shadow-lg transition-all duration-300">
